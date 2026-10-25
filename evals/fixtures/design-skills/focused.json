@@ -1,0 +1,45 @@
+{
+  "notice": "Independent synthetic action-selection cases. Report selected skills, next actions, output destination, and unresolved decisions. Do not execute these cases or change files.",
+  "cases": [
+    {
+      "id": "audit-only",
+      "request": "Audit this package for code hygiene. I have not selected a refactor.",
+      "context": "Source is available. A maintainability audit skill is available. No implementation or design was requested."
+    },
+    {
+      "id": "adequate-fix",
+      "request": "Implement the agreed helper extraction and its regression check.",
+      "context": "A verified audit already specifies the exact helper, its owning file, all three callers, preserved signatures, and test cases. There are no unresolved consequential decisions. Repository instructions require no design document."
+    },
+    {
+      "id": "chosen-design",
+      "request": "Document the architecture we already agreed: keep the current application and use its existing worker command. Do not reopen that choice.",
+      "context": "The supplied decision settles job ownership, persistence, retries, account authorization, and rollout. No relevant design document exists."
+    },
+    {
+      "id": "narrow-text",
+      "request": "Use only this sentence. Replace the word Completed with Accepted: 'Completed: your report request was queued.' Return the corrected sentence only.",
+      "context": "A repository and design skills are available, but no files are needed."
+    },
+    {
+      "id": "existing-custom-path",
+      "request": "Update the retry section in notes/decisions/imports.md to match this approved contract. Keep the other sections unchanged.",
+      "context": "The supplied file already documents the current import experience. The new contract says an unknown result can be reconciled with the original request ID for 24 hours. Visual styling and scope sections are still valid. No code changes requested."
+    },
+    {
+      "id": "cross-scope",
+      "request": "Design a one-click retry flow for partially completed imports.",
+      "context": "The server may have committed valid rows. A fresh whole-file retry can create duplicates. No failed-row endpoint or deduplication contract exists. The results table and error presentation can be designed without deciding retry semantics."
+    },
+    {
+      "id": "existing-structure",
+      "request": "Design support for a second export format.",
+      "context": "The current application already has a format interface, a registry, authorization, bounded streaming, and a worker. A new implementation satisfies the existing interface. No new process or data ownership is required."
+    },
+    {
+      "id": "storage-failure",
+      "request": "Design the module split for the selected change.",
+      "context": "Evidence is sufficient. The filesystem is read-only and no artifact can be saved. No external destinations or credential changes are authorized."
+    }
+  ]
+}

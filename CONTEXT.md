@@ -1,8 +1,10 @@
-# Audit purposes
+# Audit and design purposes
 
-These terms distinguish the audit purposes in this marketplace.
+These terms distinguish the audit and design workflows in this marketplace.
 
 ## Language
+
+### Audits
 
 **Code maintainability audit**:
 An assessment of how easily people can understand, test, and change a codebase as it grows.
@@ -26,3 +28,23 @@ A suspected problem whose material prerequisites or consequences cannot yet be e
 
 **Dependency finding**:
 A security audit finding that identifies an in-scope dependency version affected by a verified advisory, with the advisory conditions and dependency use established. Application exploitability may remain unverified.
+
+### Design
+
+**Design workflow**:
+A process that resolves consequential choices for a selected change or new capability. It can use audit findings as evidence, but does not require an audit or repeat decisions already adequately resolved.
+
+**Product brief**:
+A statement of the user problem, evidence, scope, constraints, and observable success criteria. It establishes the purpose of a proposed change.
+
+**Product design**:
+The design of the complete user experience, including workflows, rules, interactions, consequential states, recovery, and relevant visual presentation. It specifies how a proposed solution behaves for its users.
+
+**Architecture design**:
+The allocation of system responsibilities, data ownership, interactions, and runtime constraints needed to support a change. It applies within a single application as well as across separately running parts.
+
+**Code design**:
+The organization of an implementation into modules, interfaces, dependencies, files, and folders. It resolves structural choices needed to understand, test, and change the implementation.
+
+**Design document**:
+A concise record of the chosen approach for a coherent change, meaningful alternatives, constraints, and remaining decisions. It contains only the design scopes relevant to that change.

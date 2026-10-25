@@ -43,6 +43,14 @@
       "description": "Frame the user problem, evidence, scope, and success criteria."
     },
     {
+      "name": "design-product",
+      "category": "product-design",
+      "ownership": "custom",
+      "source": "local",
+      "path": "plugins/product-design/skills/design-product",
+      "description": "Design user flows, interactions, recovery, and visual behavior for a selected change."
+    },
+    {
       "name": "archify",
       "category": "product-design",
       "ownership": "upstream",
@@ -57,6 +65,22 @@
       "source": "mattpocock",
       "path": "skills/engineering/prototype",
       "description": "Explore UI alternatives and state models."
+    },
+    {
+      "name": "design-architecture",
+      "category": "engineering",
+      "ownership": "custom",
+      "source": "local",
+      "path": "plugins/software-design/skills/design-architecture",
+      "description": "Design system responsibilities, data ownership, runtime contracts, and compatibility."
+    },
+    {
+      "name": "design-code",
+      "category": "engineering",
+      "ownership": "custom",
+      "source": "local",
+      "path": "plugins/software-design/skills/design-code",
+      "description": "Design module interfaces, dependencies, file organization, and caller migration."
     },
     {
       "name": "write-linear-issue",
@@ -215,7 +239,19 @@
     {
       "name": "product-design",
       "skills": [
-        "product-brief"
+        "product-brief",
+        "design-product"
+      ],
+      "native": {
+        "marketplace": "personal",
+        "repository": "ruohao1/agent-skills"
+      }
+    },
+    {
+      "name": "software-design",
+      "skills": [
+        "design-architecture",
+        "design-code"
       ],
       "native": {
         "marketplace": "personal",

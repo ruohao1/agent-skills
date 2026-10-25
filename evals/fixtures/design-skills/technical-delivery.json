@@ -1,0 +1,71 @@
+{
+  "notice": "Synthetic filesystem cases. Use each named skill independently, without companion skills. Seed each project with its primary fixture and the listed files. Text-only cases need no project source. Keep raw responses private.",
+  "cases": [
+    {
+      "id": "architecture-default",
+      "skill": "design-architecture",
+      "primary": "architecture",
+      "request": "Design background report exports from the supplied requirements and current application. Do not implement them.",
+      "seed_files": {
+        "docs/designs/README.md": "# Design index\n\nKeep this existing index unchanged.\n"
+      }
+    },
+    {
+      "id": "architecture-update",
+      "skill": "design-architecture",
+      "primary": "architecture",
+      "request": "Update only the Recovery section of notes/decisions/exports.md from the supplied export requirements and current application. Preserve every other section unchanged. No code changes.",
+      "seed_files": {
+        "notes/decisions/exports.md": "# Export architecture\n\n## Ownership\nThe SQL job record owns export state. Keep the current application and existing worker command.\n\n## Recovery\nAfter a crash, create a new logical job. Let any worker publish the result. Use the cleanup helper as the result-retention policy.\n\n## Compatibility\nKeep the existing synchronous response and authorization behavior. This section is already approved.\n"
+      }
+    },
+    {
+      "id": "architecture-custom",
+      "skill": "design-architecture",
+      "primary": "architecture",
+      "request": "Design background report exports and save the handoff to notes/export-architecture.md. Use the supplied requirements and current application. Do not implement them.",
+      "seed_files": {
+        "notes/keep.md": "This unrelated note must stay unchanged.\n"
+      }
+    },
+    {
+      "id": "architecture-text",
+      "skill": "design-architecture",
+      "request": "Use only this sentence. Replace running with queued and return the sentence only: 'The export is running.'",
+      "seed_files": {}
+    },
+    {
+      "id": "code-default",
+      "skill": "design-code",
+      "primary": "code",
+      "request": "Design a refactor for the selected pricing finding. Keep the public caller signatures and current behavior. Do not re-audit or implement it.",
+      "seed_files": {
+        "docs/designs/README.md": "# Design index\n\nKeep this existing index unchanged.\n"
+      }
+    },
+    {
+      "id": "code-update",
+      "skill": "design-code",
+      "primary": "code",
+      "request": "Update only the Migration section of notes/decisions/pricing.md to cover the supplied callers and preserve their current contracts. Preserve every other section unchanged. No code changes.",
+      "seed_files": {
+        "notes/decisions/pricing.md": "# Pricing refactor\n\n## Ownership\nThe existing pricing package will own discounted_total(prices, discount). Keep Decimal behavior.\n\n## Migration\nMigrate only the order handler and remove its public function. Round after summing.\n\n## Scope\nNo policy registry or external providers. Preserve the tracing TODO. This section is already approved.\n"
+      }
+    },
+    {
+      "id": "code-custom",
+      "skill": "design-code",
+      "primary": "code",
+      "request": "Design the selected pricing refactor and save the handoff to notes/pricing-structure.md. Preserve the public caller signatures and current behavior. Do not implement it.",
+      "seed_files": {
+        "notes/keep.md": "This unrelated note must stay unchanged.\n"
+      }
+    },
+    {
+      "id": "code-text",
+      "skill": "design-code",
+      "request": "Use only this sentence. Replace class with function and return the sentence only: 'The class owns the pricing rule.'",
+      "seed_files": {}
+    }
+  ]
+}

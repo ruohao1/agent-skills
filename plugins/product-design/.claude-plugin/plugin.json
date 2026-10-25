@@ -1,7 +1,7 @@
 {
   "name": "product-design",
-  "version": "0.2.1",
-  "description": "Frame product decisions with evidence, consequential states, and clear implementation blockers.",
+  "version": "0.3.0",
+  "description": "Frame product problems and design user experiences with verified constraints, consequential states, and concise handoffs.",
   "author": {
     "name": "ruohao1",
     "url": "https://github.com/ruohao1"
@@ -11,6 +11,7 @@
   "keywords": [
     "product-design",
     "ux",
-    "briefs"
+    "briefs",
+    "flows"
   ]
 }

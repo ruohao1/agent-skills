@@ -1,0 +1,17 @@
+{
+  "name": "linear-workflows",
+  "version": "0.4.3",
+  "description": "Write concise Linear issues, research comments, and final wrap-ups with verified context and permanent evidence links.",
+  "author": {
+    "name": "ruohao1",
+    "url": "https://github.com/ruohao1"
+  },
+  "skills": "./skills/",
+  "repository": "https://github.com/ruohao1/agent-skills",
+  "keywords": [
+    "linear",
+    "issues",
+    "comments",
+    "wrap-up"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": 3,
+  "diagram_type": "lifecycle",
+  "meta": {"title": "Illustrative maintenance approval lifecycle", "locale": "en", "output": "approval.html", "quality_profile": "showcase"},
+  "mainPath": ["requested", "accepted", "running", "succeeded"],
+  "states": [
+    {"id":"requested","type":"start","label":"Awaiting approval","sublabel":"ten-minute window"},
+    {"id":"accepted","type":"waiting","label":"Approval accepted","sublabel":"202 is acknowledgement"},
+    {"id":"running","type":"active","label":"Maintenance running","sublabel":"execution in progress"},
+    {"id":"succeeded","type":"success","label":"Succeeded","sublabel":"authoritative outcome"},
+    {"id":"expired","type":"neutral","label":"Expired","sublabel":"approval window closed"},
+    {"id":"failed","type":"failure","label":"Failed","sublabel":"operator follows recovery"}
+  ],
+  "transitions": [
+    {"from":"requested","to":"accepted","label":"approve in time"},
+    {"from":"accepted","to":"running","label":"execution starts"},
+    {"from":"running","to":"succeeded","label":"success event"},
+    {"from":"requested","to":"expired","label":"window closes"},
+    {"from":"running","to":"failed","label":"failure event","variant":"security"}
+  ],
+  "cards": [{"dot":"amber","title":"Illustrative contract","items":["Accepted approvals continue after the approval window closes in this synthetic example.","Loss of connectivity makes the observed outcome unknown; it does not change server state.","No automatic retry or exactly-once guarantee is implied."]}]
+}

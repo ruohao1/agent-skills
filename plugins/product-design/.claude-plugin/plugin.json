@@ -1,0 +1,16 @@
+{
+  "name": "product-design",
+  "version": "0.2.1",
+  "description": "Frame product decisions with evidence, consequential states, and clear implementation blockers.",
+  "author": {
+    "name": "ruohao1",
+    "url": "https://github.com/ruohao1"
+  },
+  "skills": "./skills/",
+  "repository": "https://github.com/ruohao1/agent-skills",
+  "keywords": [
+    "product-design",
+    "ux",
+    "briefs"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "git-workflows",
+  "version": "0.2.1",
+  "description": "Write reviewable commits and pull requests with verified context, agent attribution, and public-repository privacy.",
+  "author": {
+    "name": "ruohao1",
+    "url": "https://github.com/ruohao1"
+  },
+  "skills": "./skills/",
+  "repository": "https://github.com/ruohao1/agent-skills",
+  "keywords": [
+    "git",
+    "commits",
+    "pull-requests"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "git-workflows",
+  "version": "0.2.1",
+  "description": "Write reviewable commits and pull requests with verified context, agent attribution, and public-repository privacy.",
+  "author": {
+    "name": "ruohao1",
+    "url": "https://github.com/ruohao1"
+  },
+  "skills": "./skills/",
+  "repository": "https://github.com/ruohao1/agent-skills",
+  "keywords": [
+    "git",
+    "commits",
+    "pull-requests"
+  ],
+  "interface": {
+    "displayName": "Git Workflows",
+    "shortDescription": "Reviewable commits and pull requests with repository privacy.",
+    "longDescription": "Create small commits and concise pull requests from the intended work, preserve unrelated changes, and keep Linear references out of public repositories.",
+    "developerName": "ruohao1",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": [
+      "Commit the intended changes as small, reviewable commits.",
+      "Write and save a pull request for the completed change."
+    ]
+  }
+}

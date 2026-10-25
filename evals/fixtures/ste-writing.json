@@ -1,0 +1,42 @@
+[
+  {
+    "id": "product_brief",
+    "skill": "product-brief",
+    "request": "Draft a brief from these notes. Return text only, at most 140 words. Operations staff need to send a one-time access invitation during a support call. An accepted submission does not establish email delivery. If the request times out, the submission outcome is unknown. The API has a receipt lookup, but whether invitations expire and whether repeating a request creates another invitation are unresolved. The current suggestion is a Resend button. No user research or delivery baseline exists. Preserve the distinction between the user need, proposed solution, and unknown behavior."
+  },
+  {
+    "id": "commit",
+    "skill": "write-commit",
+    "request": "Draft only a commit message for this verified change; do not create a commit. The destination is public and uses Conventional Commits. Previously a timeout caused send_request() to submit the request again, which could create a duplicate. It now uses lookup_receipt() before deciding whether to retry. An unknown receipt result stops automatic retries. Seven regression tests passed; the live service was not tested. Internal tracking is DEMO-204. Verified agent attribution: Co-authored-by: Example Agent <agent@example.com>. Keep the message under 90 words, including trailers."
+  },
+  {
+    "id": "pull_request",
+    "skill": "write-pull-request",
+    "request": "Draft only the body of an existing public PR, at most 110 words. These facts are verified: an HTTP timeout previously triggered another request even though the first request might have succeeded. The change consults the server receipt before a retry; an unknown receipt result requires manual review. The original request identifier remains unchanged. Seven regression tests pass. No live-service validation was performed. A connection dropped during one test, but its cause is unknown. The required output has a problem/change paragraph and a validation paragraph."
+  },
+  {
+    "id": "linear_issue",
+    "skill": "write-linear-issue",
+    "request": "Draft only a Bug issue body, at most 130 words. A request can be accepted by the service before the client times out. The client then resends the request and can create a duplicate record. Receipt lookup exists. Its unknown result must not be treated as rejection. Root cause of the timeout is unknown. Scope: prevent automatic resubmission until the first outcome is known; preserve the request identifier. Acceptance: an accepted receipt does not cause a retry; an unknown receipt leaves the item unresolved; a confirmed rejection follows the existing retry policy. Do not choose a timeout value or promise to remove all duplicates."
+  },
+  {
+    "id": "linear_comment",
+    "skill": "write-linear-comment",
+    "request": "Draft one research comment, text only, at most 90 words. A source review established that the client checks receipt status after a timeout. The request can have succeeded even though the client got no response. An unknown status remains unresolved; the source does not establish live-service behavior. Recommend one bounded live experiment as follow-up. The following immutable permalink was verified in the fixture and must remain exact: https://github.com/example/receipt-client/blob/0123456789abcdef0123456789abcdef01234567/src/receipt.ts#L20-L34 . Distinguish the source finding from the unperformed experiment."
+  },
+  {
+    "id": "linear_wrap_up",
+    "skill": "wrap-up-linear-issue",
+    "request": "Draft only the final TL;DR for a completed research issue, at most 80 words. The agreed research scope was source inspection, which is complete. The source uses receipt lookup after an ambiguous timeout and stops automatic retries while the status is unknown. This supports a candidate integration, not a claim of live reliability. No live experiment was performed. The useful next action is a bounded test against the service. Preserve this decisive comment URL exactly: https://linear.app/example/issue/DEMO-204/receipt-research#comment-7c2d8a40 . Do not write or update anything externally."
+  },
+  {
+    "id": "general_reply",
+    "skill": null,
+    "request": "Explain what to do after an upload times out, in at most 90 words. Facts: the server might already have accepted the upload. The user must run `uploader status --request-id 'req_7B' --json` before deciding whether to submit it again. If the result is unknown, they must stop and contact support. A confirmed rejection permits a retry. Preserve the exact error quotation: \"submission outcome unknown\". Do not invent the cause of the timeout."
+  },
+  {
+    "id": "non_english_narrow_edit",
+    "skill": "write-pull-request",
+    "request": "Corrige uniquement la faute dans cette phrase française. Renvoie uniquement la phrase corrigée, sans titre ni explication. Ne change pas la commande ni le reste du texte : Exécutez `uploader status --request-id 'req_7B' --json` pour vérifier le résultta."
+  }
+]

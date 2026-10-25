@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Approval prototype — throwaway</title>
+<style>
+*{box-sizing:border-box}body{font:17px/1.5 system-ui;background:#f3f5f8;color:#142535;margin:0;padding:24px 24px 110px}main{max-width:1060px;margin:auto}header{border-bottom:1px solid #bdc9d2;margin-bottom:24px}h1{font-size:clamp(24px,4vw,40px);line-height:1.2}h2{font-size:22px}section,article,aside{padding:24px;background:white;border:1px solid #bdc9d2;border-radius:12px}button,a,input{font:inherit}button{cursor:pointer;min-height:44px;padding:8px 16px;border-radius:8px;border:1px solid #536879;background:#142535;color:white}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #bd4a00;outline-offset:4px}label{display:block}input{padding:10px;max-width:100%;width:100%;margin:8px 0 20px;border:1px solid #536879;border-radius:6px}.split{display:grid;grid-template-columns:1fr 2fr;gap:24px}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.badge{font-weight:700;color:#635000}nav{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;background:#142535;color:white;padding:10px;border-radius:32px;max-width:calc(100% - 24px);box-shadow:0 2px 15px #0004}nav button{border:1px solid white}#variant-label{min-width:140px;text-align:center}.state{font-size:14px;overflow-wrap:anywhere}output{display:block;margin-top:16px}@media(max-width:650px){body{padding:16px 16px 110px}.split,.summary{grid-template-columns:1fr}section,article,aside{padding:16px}}
+</style>
+<main><header><p>THROWAWAY PROTOTYPE · synthetic data</p><h1>Maintenance approvals</h1><p>Question: which layout makes acceptance and execution outcome easiest to distinguish?</p></header><label for="filter">Filter requests (keyboard arrows remain in this field)</label><input id="filter" placeholder="Search maintenance requests"><div id="view"></div><output id="action" aria-live="polite"></output><p class="state" id="state"></p></main>
+<nav aria-label="Prototype variants"><button aria-label="Previous variant" id="previous">←</button><span id="variant-label" aria-live="polite"></span><button aria-label="Next variant" id="next">→</button></nav>
+<script>
+// Three throwaway layouts on one page, switchable via ?variant=; no existing app or production build.
+const variants=['A','B','C'], names={A:'Focused request',B:'Queue and detail',C:'Outcome overview'};
+let variant=new URLSearchParams(location.search).get('variant'); if(!variants.includes(variant))variant='A';
+const task='<h2>Database maintenance</h2><p>Scheduled request M-104 · approved 2 minutes ago</p><p class="badge">Accepted · execution pending</p><p>Acceptance confirms receipt. Completion requires a successful execution outcome.</p><button id="refresh">Check current status</button>';
+function render(){
+ const view=document.getElementById('view');
+ if(variant==='A')view.innerHTML='<section>'+task+'<h3>What happens next?</h3><ol><li>Approval accepted</li><li>Execution starts</li><li>Confirmed success or failure</li></ol></section>';
+ if(variant==='B')view.innerHTML='<div class="split"><aside><h2>Approval queue</h2><p><strong>M-104</strong><br>Execution pending</p><p>M-105<br>Awaiting approval</p></aside><article>'+task+'</article></div>';
+ if(variant==='C')view.innerHTML='<div class="summary"><section><h2>Awaiting approval</h2><p>1 request</p></section><section><h2>Accepted</h2><p>1 pending execution</p></section><section><h2>Completed</h2><p>0 confirmed outcomes</p></section></div><h2>Needs follow-up</h2><article>'+task+'</article>';
+ document.getElementById('variant-label').textContent=variant+' · '+names[variant];
+ document.getElementById('state').textContent=JSON.stringify({variant,request:'M-104',approval:'accepted',execution:'pending',persistence:false});
+ document.getElementById('refresh').onclick=()=>document.getElementById('action').textContent='Demo response: execution still pending. No real request was sent.';
+}
+function cycle(step){variant=variants[(variants.indexOf(variant)+step+3)%3];const url=new URL(location.href);url.searchParams.set('variant',variant);history.replaceState(null,'',url);render()}
+document.getElementById('previous').onclick=()=>cycle(-1);document.getElementById('next').onclick=()=>cycle(1);
+document.addEventListener('keydown',e=>{if(e.target.closest('input,textarea,[contenteditable]'))return;if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();cycle(e.key==='ArrowLeft'?-1:1)}});render();
+</script></html>

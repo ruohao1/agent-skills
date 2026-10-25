@@ -1,0 +1,281 @@
+{
+  "schema_version": 1,
+  "installer_version": "1.7.2",
+  "mcp_servers": [
+    {
+      "name": "chrome-devtools",
+      "version": "1.12.0",
+      "description": "Inspect and debug an isolated, headless Chrome browser."
+    }
+  ],
+  "presets": [
+    {
+      "name": "personal",
+      "description": "Shared working preferences, useful next steps, and an on-request reviewer; inherits your model and connections."
+    }
+  ],
+  "sources": {
+    "local": {
+      "repository": "ruohao1/agent-skills",
+      "ref": null,
+      "local_path": "."
+    },
+    "archify": {
+      "repository": "tt-a1i/archify",
+      "ref": "ca67c9f16be0c8cad409cd45190aa052e0649b84"
+    },
+    "mattpocock": {
+      "repository": "mattpocock/skills",
+      "ref": "49dd158d1076134a641b33efb035946536778336"
+    },
+    "ponytail": {
+      "repository": "DietrichGebert/ponytail",
+      "ref": "6f1c2bfff0c837d268929a7c4e490918eb4fab29"
+    }
+  },
+  "skills": [
+    {
+      "name": "product-brief",
+      "category": "product-design",
+      "ownership": "custom",
+      "source": "local",
+      "path": "plugins/product-design/skills/product-brief",
+      "description": "Frame the user problem, evidence, scope, and success criteria."
+    },
+    {
+      "name": "archify",
+      "category": "product-design",
+      "ownership": "upstream",
+      "source": "archify",
+      "path": "archify",
+      "description": "Create and check interactive diagrams."
+    },
+    {
+      "name": "prototype",
+      "category": "product-design",
+      "ownership": "upstream",
+      "source": "mattpocock",
+      "path": "skills/engineering/prototype",
+      "description": "Explore UI alternatives and state models."
+    },
+    {
+      "name": "write-linear-issue",
+      "category": "engineering",
+      "ownership": "custom",
+      "source": "local",
+      "path": "plugins/linear-workflows/skills/write-linear-issue",
+      "description": "Write and save concise Linear issues grounded in verified context and related work."
+    },
+    {
+      "name": "write-linear-comment",
+      "category": "engineering",
+      "ownership": "custom",
+      "source": "local",
+      "path": "plugins/linear-workflows/skills/write-linear-comment",
+      "description": "Write requested Linear comments with verified updates, thread context, and permanent code links."
+    },
+    {
+      "name": "wrap-up-linear-issue",
+      "category": "engineering",
+      "ownership": "custom",
+      "source": "local",
+      "path": "plugins/linear-workflows/skills/wrap-up-linear-issue",
+      "description": "Save a concise final TL;DR before moving a Linear issue to its completed state."
+    },
+    {
+      "name": "write-commit",
+      "category": "engineering",
+      "ownership": "custom",
+      "source": "local",
+      "path": "plugins/git-workflows/skills/write-commit",
+      "description": "Create small, reviewable commits with verified agent attribution and public-repository privacy."
+    },
+    {
+      "name": "write-pull-request",
+      "category": "engineering",
+      "ownership": "custom",
+      "source": "local",
+      "path": "plugins/git-workflows/skills/write-pull-request",
+      "description": "Write and save pull requests with verified context and no Linear references in public repositories."
+    },
+    {
+      "name": "audit-code",
+      "category": "engineering",
+      "ownership": "custom",
+      "source": "local",
+      "path": "plugins/code-quality/skills/audit-code",
+      "description": "Audit code hygiene and maintainability, with all supported refactoring findings ranked by impact and estimated effort."
+    },
+    {
+      "name": "audit-scale",
+      "category": "engineering",
+      "ownership": "custom",
+      "source": "local",
+      "path": "plugins/code-quality/skills/audit-scale",
+      "description": "Audit data growth, concurrent work, and recovery with supported findings, confidence, and estimated effort."
+    },
+    {
+      "name": "audit-security",
+      "category": "engineering",
+      "ownership": "custom",
+      "source": "local",
+      "path": "plugins/code-quality/skills/audit-security",
+      "description": "Audit application, dependency, CI, and configuration security with verified evidence and explicit uncertainty."
+    },
+    {
+      "name": "audit-repo",
+      "category": "engineering",
+      "ownership": "custom",
+      "source": "local",
+      "path": "plugins/code-quality/skills/audit-repo",
+      "description": "Coordinate audit-code, audit-scale, and audit-security into one saved report; requires those companion skills."
+    },
+    {
+      "name": "codebase-design",
+      "category": "engineering",
+      "ownership": "upstream",
+      "source": "mattpocock",
+      "path": "skills/engineering/codebase-design",
+      "description": "Design deep modules with small interfaces."
+    },
+    {
+      "name": "domain-modeling",
+      "category": "engineering",
+      "ownership": "upstream",
+      "source": "mattpocock",
+      "path": "skills/engineering/domain-modeling",
+      "description": "Sharpen domain terms and decisions."
+    },
+    {
+      "name": "diagnosing-bugs",
+      "category": "engineering",
+      "ownership": "upstream",
+      "source": "mattpocock",
+      "path": "skills/engineering/diagnosing-bugs",
+      "description": "Reproduce, investigate, and verify a bug fix."
+    },
+    {
+      "name": "tdd",
+      "category": "engineering",
+      "ownership": "upstream",
+      "source": "mattpocock",
+      "path": "skills/engineering/tdd",
+      "description": "Develop behavior through focused failing tests."
+    },
+    {
+      "name": "ponytail",
+      "category": "engineering",
+      "ownership": "upstream",
+      "source": "ponytail",
+      "path": "skills/ponytail",
+      "description": "Solve the full problem with the least necessary code."
+    },
+    {
+      "name": "ponytail-review",
+      "category": "engineering",
+      "ownership": "upstream",
+      "source": "ponytail",
+      "path": "skills/ponytail-review",
+      "description": "Review a change and its connected callers."
+    },
+    {
+      "name": "ponytail-audit",
+      "category": "engineering",
+      "ownership": "upstream",
+      "source": "ponytail",
+      "path": "skills/ponytail-audit",
+      "description": "Audit a codebase for correctness, risk, and complexity."
+    },
+    {
+      "name": "ponytail-debt",
+      "category": "engineering",
+      "ownership": "upstream",
+      "source": "ponytail",
+      "path": "skills/ponytail-debt",
+      "description": "List documented shortcuts and their upgrade conditions."
+    },
+    {
+      "name": "ponytail-gain",
+      "category": "engineering",
+      "ownership": "upstream",
+      "source": "ponytail",
+      "path": "skills/ponytail-gain",
+      "description": "Read the published Ponytail benchmark results."
+    },
+    {
+      "name": "ponytail-help",
+      "category": "engineering",
+      "ownership": "upstream",
+      "source": "ponytail",
+      "path": "skills/ponytail-help",
+      "description": "Show Ponytail modes and commands."
+    }
+  ],
+  "plugins": [
+    {
+      "name": "product-design",
+      "skills": [
+        "product-brief"
+      ],
+      "native": {
+        "marketplace": "personal",
+        "repository": "ruohao1/agent-skills"
+      }
+    },
+    {
+      "name": "linear-workflows",
+      "skills": [
+        "write-linear-issue",
+        "write-linear-comment",
+        "wrap-up-linear-issue"
+      ],
+      "native": {
+        "marketplace": "personal",
+        "repository": "ruohao1/agent-skills"
+      }
+    },
+    {
+      "name": "git-workflows",
+      "skills": [
+        "write-commit",
+        "write-pull-request"
+      ],
+      "native": {
+        "marketplace": "personal",
+        "repository": "ruohao1/agent-skills"
+      }
+    },
+    {
+      "name": "code-quality",
+      "skills": [
+        "audit-code",
+        "audit-scale",
+        "audit-security",
+        "audit-repo"
+      ],
+      "native": {
+        "marketplace": "personal",
+        "repository": "ruohao1/agent-skills"
+      }
+    },
+    {
+      "name": "ponytail",
+      "skills": [
+        "ponytail",
+        "ponytail-review",
+        "ponytail-audit",
+        "ponytail-debt",
+        "ponytail-gain",
+        "ponytail-help"
+      ],
+      "native": {
+        "marketplace": "ponytail",
+        "repository": "DietrichGebert/ponytail",
+        "setup": {
+          "codex": "Review and trust the Ponytail lifecycle hooks in /hooks, then start a new thread.",
+          "claude-code": "Reload plugins or start a new session; verify the Ponytail hooks and band in the host."
+        }
+      }
+    }
+  ]
+}

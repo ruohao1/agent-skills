@@ -1,0 +1,12 @@
+{
+  "name": "code-quality",
+  "version": "0.2.0",
+  "description": "Audit maintainability, runtime scaling, and security with evidence, focused fixes, and estimated effort.",
+  "author": {
+    "name": "ruohao1",
+    "url": "https://github.com/ruohao1"
+  },
+  "skills": "./skills/",
+  "repository": "https://github.com/ruohao1/agent-skills",
+  "keywords": ["code-hygiene", "maintainability", "refactoring", "scaling", "security"]
+}

@@ -1,0 +1,32 @@
+{
+  "name": "personal",
+  "owner": {
+    "name": "ruohao1",
+    "url": "https://github.com/ruohao1"
+  },
+  "metadata": {
+    "description": "Personal coding skills for Codex, Claude Code, and OpenCode."
+  },
+  "plugins": [
+    {
+      "name": "product-design",
+      "source": "./plugins/product-design",
+      "category": "Productivity"
+    },
+    {
+      "name": "linear-workflows",
+      "source": "./plugins/linear-workflows",
+      "category": "Productivity"
+    },
+    {
+      "name": "git-workflows",
+      "source": "./plugins/git-workflows",
+      "category": "Productivity"
+    },
+    {
+      "name": "code-quality",
+      "source": "./plugins/code-quality",
+      "category": "Productivity"
+    }
+  ]
+}

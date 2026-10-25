@@ -1,0 +1,30 @@
+{
+  "name": "linear-workflows",
+  "version": "0.4.3",
+  "description": "Write concise Linear issues, research comments, and final wrap-ups with verified context and permanent evidence links.",
+  "author": {
+    "name": "ruohao1",
+    "url": "https://github.com/ruohao1"
+  },
+  "skills": "./skills/",
+  "repository": "https://github.com/ruohao1/agent-skills",
+  "keywords": [
+    "linear",
+    "issues",
+    "comments",
+    "wrap-up"
+  ],
+  "interface": {
+    "displayName": "Linear Workflows",
+    "shortDescription": "Grounded Linear issues, comments, and wrap-ups.",
+    "longDescription": "Write and save Linear issues and concise research comments, then record a final TL;DR before moving completed work to Done.",
+    "developerName": "ruohao1",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": [
+      "Write and save a Linear issue for this change.",
+      "Write a Linear progress comment with permanent links to the supporting code.",
+      "Finish this Linear issue and move it to Done."
+    ]
+  }
+}

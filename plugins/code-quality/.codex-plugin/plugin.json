@@ -1,0 +1,25 @@
+{
+  "name": "code-quality",
+  "version": "0.2.0",
+  "description": "Audit maintainability, runtime scaling, and security with evidence, focused fixes, and estimated effort.",
+  "author": {
+    "name": "ruohao1",
+    "url": "https://github.com/ruohao1"
+  },
+  "skills": "./skills/",
+  "repository": "https://github.com/ruohao1/agent-skills",
+  "keywords": ["code-hygiene", "maintainability", "refactoring", "scaling", "security"],
+  "interface": {
+    "displayName": "Code Quality",
+    "shortDescription": "Focused audits for maintainability, runtime scaling, and security.",
+    "longDescription": "Audit a repository or selected area for maintainability, runtime scaling, or security. Report all supported findings by root cause, ranked by impact, with estimated effort and verified source locations.",
+    "developerName": "ruohao1",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": [
+      "Run audit-repo for one combined maintainability, runtime scaling, and security report.",
+      "Audit runtime scaling, concurrent work, and recovery in this repository.",
+      "Audit security risks in this repository, including dependencies and CI."
+    ]
+  }
+}

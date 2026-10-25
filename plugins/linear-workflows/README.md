@@ -1,9 +1,10 @@
 # Linear Workflows
 
-Each skill includes STE-inspired writing guidance for clear English prose. It preserves technical detail without enforcing the full ASD-STE100 dictionary or claiming formal compliance. No personal preset is required. See the [writing evaluation](../../evals/results/2026-10-24-ste-writing.md).
+The three writing skills include STE-inspired guidance for clear English prose. It preserves technical detail without enforcing the full ASD-STE100 dictionary or claiming formal compliance. No personal preset is required. See the [writing evaluation](../../evals/results/2026-10-24-ste-writing.md).
 
-Version **0.4.3** contains three skills for a person and a coding agent:
+Version **0.5.0** contains four skills for a person and a coding agent:
 
+- [check-linear-context](skills/check-linear-context/SKILL.md) reads relevant project updates, related work, and discussion at session start, on resumption, and before each new substantial task. It flags changed decisions, overlap, and blockers before implementation. It remains read-only and reuses fresh context during the same task.
 - [write-linear-issue](skills/write-linear-issue/SKILL.md) writes concise context, scope, and observable acceptance criteria using Bug, Feature, Research, and Chore skeletons. It selects one primary purpose, researches available facts, improves matching issues, links distinct work, and maps to the destination's existing labels.
 - [write-linear-comment](skills/write-linear-comment/SKILL.md) writes requested progress, blocker/question, decision, and completion/handoff comments. Research updates tell the story through short, consequential discoveries in the relevant thread. Code references use verified commit permalinks and exact line ranges; code-dependent comments remain drafts until those links exist.
 - [wrap-up-linear-issue](skills/wrap-up-linear-issue/SKILL.md) runs before an agent moves an issue to Done or its team's equivalent completed state. It saves and verifies a short TL;DR at the top of the description, linking decisive comments and preserving the original task, then makes the authorized status change. No separate wrap-up request is needed. It also handles requested summaries of already-completed work without changing status.
@@ -12,20 +13,28 @@ Writing includes saving to Linear. Issue context uses short factual bullets; eac
 
 The wrap-up skill's description supplies the completion trigger; no personal preset or AGENTS.md change is needed. Incomplete required work or an unconfirmed summary save leaves status unchanged. An existing accurate summary is reused. This is skill guidance, not a server-side Linear status restriction; it does not intercept manual status changes or start updates when unrelated local tasks finish.
 
+The context skill also uses its description for automatic selection and works
+independently. It does not install a session hook or change `AGENTS.md`. Project
+mapping must be verified; similar names alone are insufficient. Failed access
+remains an explicit knowledge gap. Optional shared agent notes are not required.
+The skill cannot reveal unrecorded work or guarantee selection by every host.
+See the [context evaluation](../../evals/check-linear-context.md) and
+[results](../../evals/results/2026-10-25-check-linear-context.md).
+
 The issue skill defaults to one workspace-wide, single-select Type group with those four types. New issues are assigned to the invoking user unless another assignee or unassigned is requested; edits preserve existing ownership unless reassignment is requested. Required team templates take precedence. Research can close with documented inconclusive findings; bugs do not require a known cause before capture. Writing issues does not migrate labels or create native Linear templates.
 
-Connect Linear in your agent with the access needed for the selected skill: read issues and discussion, create/reply/edit comments, or read teams/projects/labels, create/update issues, and link related work. This package supplies instructions, not a connector, credentials, or a team/project selection. Without a connection, the skills return unsaved drafts. Triage, roadmap planning, and backlog cleanup are outside this plugin.
+Connect Linear in your agent with the access needed for the selected skill. Context checks need read access to projects, issues, and discussion. Writing needs the relevant create, update, or comment access. This package supplies instructions, not a connector, credentials, or a team/project selection. Without a connection, writing skills return unsaved drafts; context checks report the gap and continue independent work. Triage, roadmap planning, and backlog cleanup are outside this plugin.
 
 From this checkout:
 
 ```sh
-python3 scripts/setup.py install --skill write-linear-issue write-linear-comment wrap-up-linear-issue --agent codex --scope global
+python3 scripts/setup.py install --skill check-linear-context write-linear-issue write-linear-comment wrap-up-linear-issue --agent codex --scope global
 ```
 
 The shared repository route is:
 
 ```sh
-npx skills@latest add ruohao1/agent-skills --skill write-linear-issue write-linear-comment wrap-up-linear-issue --agent codex claude-code opencode
+npx skills@latest add ruohao1/agent-skills --skill check-linear-context write-linear-issue write-linear-comment wrap-up-linear-issue --agent codex claude-code opencode
 ```
 
 Choose any skill independently by listing only its name. Examples: “Write an issue for this change,” “Post the verified research findings,” or “Finish this issue and move it to Done.” For the complete native bundle on Codex or Claude Code, select `--plugin linear-workflows --route native`. See [setup](../../docs/setup.md) for supported scopes and existing-installation handling. Choose one installation route to avoid duplicate skill copies.

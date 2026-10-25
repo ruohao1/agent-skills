@@ -1,6 +1,6 @@
 # Set up your tools
 
-The catalog contains 22 skills, combining this repository's custom skills with selected upstream tools. Product Design and Engineering are categories; custom and upstream identify who maintains each tool. External sources stay upstream and their portable skill revisions are pinned in `catalog.json`.
+The catalog contains 23 skills, combining this repository's custom skills with selected upstream tools. Product Design and Engineering are categories; custom and upstream identify who maintains each tool. External sources stay upstream and their portable skill revisions are pinned in `catalog.json`.
 
 Install the coding agents first. The setup command needs Python 3.11+. Installing skills also needs Node 22.20.0+, npm/npx, Git, and access to GitHub and npm. Native plugin installation needs the selected host CLI. Applying a local configuration preset needs only Python. Authentication and hook trust remain host setup steps.
 
@@ -25,7 +25,7 @@ Install the complete curated portable selection for chosen agents:
 python3 scripts/setup.py install --all --agent codex claude-code opencode --scope global
 ```
 
-“All skills” means the 22 named skills, not every skill in upstream repositories. Configuration presets and MCP servers are selected separately. Only list the agents you want. Shared compatibility directories may make a skill visible to another agent that reads the same directory.
+“All skills” means the 23 named skills, not every skill in upstream repositories. Configuration presets and MCP servers are selected separately. Only list the agents you want. Shared compatibility directories may make a skill visible to another agent that reads the same directory.
 
 Choose a category, particular skills, or a complete plugin's skills:
 
@@ -197,3 +197,11 @@ Git Workflows 0.2.0 adds `write-pull-request`, including public-repository priva
 The subsequent `write-linear-issue` addition passed separate [behavioral and portable installation checks](../evals/results/2026-10-21-write-linear-issue.md) on 2026-10-21. Its native plugin activation and authenticated Linear operations remain untested; the earlier 13-skill host discovery results do not cover this addition.
 
 Linear Workflows 0.2.0 adds `write-linear-comment`, with its own [behavioral and portable installation results](../evals/results/2026-10-21-write-linear-comment.md). Its code-dependent comments require a verified published source permalink before saving. Native activation and authenticated comment operations remain untested.
+
+Linear Workflows 0.5.0 adds `check-linear-context`. Install it independently for all three agents with:
+
+```sh
+python3 scripts/setup.py install --skill check-linear-context --agent codex claude-code opencode --scope global
+```
+
+Its description triggers a read-only check at session start, on resumption, and before each new substantial task in a project that uses Linear. It reuses fresh context during the same task and honors local-only requests. Connect Linear separately. No personal preset, shared instruction change, or session hook is installed. See the [context results](../evals/results/2026-10-25-check-linear-context.md) for discovery and installation checks and their limits.

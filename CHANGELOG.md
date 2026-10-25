@@ -6,6 +6,7 @@ Reconstructed from repository documentation and evaluation records. Dates reflec
 
 ### Added
 
+- **Linear Workflows 0.5.0:** added `check-linear-context` for read-only project context at session start, on resumption, and before each new substantial task. It checks relevant decisions, completed and overlapping work, and blockers without changing shared instructions or posting updates.
 - **Code Quality 0.2.0:** added `audit-scale` for data growth, concurrency, and recovery; `audit-security` for code, dependencies, CI, configuration, and secrets; and `audit-repo` to coordinate all three custom audits. Reports include confidence, effort, and grouped checks. Added matched comparisons with Ponytail and a coverage guide.
 - **Code Quality 0.1.0:** added `audit-code` for readability and maintainability as code grows. Reports include all supported findings, grouped by root cause and ranked by impact, with suggested refactors and estimated effort.
 - **Linear Workflows 0.4.0:** `wrap-up-linear-issue` saves and verifies a short TL;DR before an agent makes an authorized transition to Done. It preserves the original task and links decisive evidence.

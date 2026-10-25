@@ -59,6 +59,14 @@
       "description": "Explore UI alternatives and state models."
     },
     {
+      "name": "check-linear-context",
+      "category": "engineering",
+      "ownership": "custom",
+      "source": "local",
+      "path": "plugins/linear-workflows/skills/check-linear-context",
+      "description": "Read relevant Linear activity before starting or resuming project work and before each new substantial task."
+    },
+    {
       "name": "write-linear-issue",
       "category": "engineering",
       "ownership": "custom",
@@ -225,6 +233,7 @@
     {
       "name": "linear-workflows",
       "skills": [
+        "check-linear-context",
         "write-linear-issue",
         "write-linear-comment",
         "wrap-up-linear-issue"

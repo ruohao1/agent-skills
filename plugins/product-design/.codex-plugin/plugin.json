@@ -1,7 +1,7 @@
 {
   "name": "product-design",
-  "version": "0.2.1",
-  "description": "Frame product decisions with evidence, consequential states, and clear implementation blockers.",
+  "version": "0.3.0",
+  "description": "Frame product problems and design user experiences with verified constraints, consequential states, and concise handoffs.",
   "author": {
     "name": "ruohao1",
     "url": "https://github.com/ruohao1"
@@ -11,18 +11,20 @@
   "keywords": [
     "product-design",
     "ux",
-    "briefs"
+    "briefs",
+    "flows"
   ],
   "interface": {
     "displayName": "Product Design",
-    "shortDescription": "Focused product briefs.",
-    "longDescription": "Turn product requests into bounded briefs with observable outcomes and explicit decision blockers.",
+    "shortDescription": "Product briefs and experience designs.",
+    "longDescription": "Frame a product problem, then independently design user flows, interactions, recovery, and visual behavior. Save a concise design for the selected change.",
     "developerName": "ruohao1",
     "category": "Productivity",
     "capabilities": [],
     "defaultPrompt": [
       "Turn these discovery notes into a product brief.",
-      "Clarify the states and success criteria in this brief."
+      "Design the user flow and recovery states for this feature.",
+      "Update this product design with the approved behavior."
     ]
   }
 }

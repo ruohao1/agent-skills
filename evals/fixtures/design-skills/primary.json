@@ -1,0 +1,39 @@
+{
+  "notice": "Synthetic repositories and requests. Names, source, and constraints are invented. Cases are independent. No production or external actions are authorized.",
+  "cases": [
+    {
+      "id": "product",
+      "request": "Design the review and recovery experience for CSV contact imports. The approved brief is in docs/brief.md. Keep that scope and use the existing UI patterns. We need a concise design that a coding agent can implement; do not implement the feature.",
+      "files": {
+        "README.md": "# Contact imports\nA small application for importing contacts. The existing UI has a file picker, a primary action, a status banner, and a results table. These patterns are keyboard accessible. No visual redesign is requested.\n",
+        "docs/brief.md": "# Approved import brief\nPeople import contacts without adding duplicates. The target outcome is a clear result and a safe next action. Scope: choose CSV, submit, inspect results, and recover after interrupted connectivity. No CSV editor, new identity system, or notification feature. Target measures have not been established.\n",
+        "docs/import-contract.md": "# Import contract\nPOST /imports accepts a client_request_id. Repeating the same ID and payload returns the same job. The ID is retained for 24 hours. Reusing it with another payload returns 409. A 202 response means accepted, not completed. GET /imports/by-request/{id} returns the accepted job or a definitive 404 while the ID is within retention. GET /imports/{id} returns queued, running, succeeded, partially_succeeded, or failed. Results include created rows and row errors. Invalid rows are skipped; valid rows may have been committed. Resubmitting a whole file with a new ID can duplicate those valid rows. There is no failed-row retry endpoint. Contact-edit permission is checked at submission; read permission is checked on each result read. The server cannot cancel a running import. No retention contract exists for request IDs older than 24 hours.\n",
+        "ui/ImportPanel.tsx": "export function ImportPanel() {\n  return <section aria-labelledby=\"import-title\"><h1 id=\"import-title\">Import contacts</h1><input type=\"file\" accept=\".csv\" /><button>Import</button><div role=\"status\" /><table aria-label=\"Import results\" /></section>;\n}\n"
+      }
+    },
+    {
+      "id": "architecture",
+      "request": "Design how the existing application should run report exports in the background and let users retrieve the result. The product requirements are settled in docs/export-requirements.md. Keep the design focused on system responsibilities and contracts. Do not implement it.",
+      "files": {
+        "README.md": "# Reports\nOne Python web application uses a managed SQL database and object storage. A worker command from the same application image already runs scheduled cleanup. The deployment supports that command independently of web requests. There is no broker. The current export path builds a report synchronously, one database page at a time. Requests can time out while object storage has already received output. Peak volume is unknown. Keep existing endpoints and authorization compatible during rollout.\n",
+        "docs/export-requirements.md": "# Approved requirements\nA user starts an export and can leave the page. They can retrieve its result later. Jobs and results are private to the owning account. A process restart must not leave a job permanently running. A lost submission response must not create duplicate logical jobs when the same request is retried. Only ready results can be downloaded. Exporting data already read does not promise a transaction-wide snapshot. The initial capacity limit may be conservative; no measured throughput target exists. No email delivery or cancel action is required.\n",
+        "app/export.py": "def export_now(actor, report_id, repository, storage):\n    report = repository.report_for_account(actor.account_id, report_id)\n    key = storage.write_rows(repository.iter_report_rows(report.id, page_size=500))\n    return {\"download_key\": key}\n",
+        "app/routes.py": "from app.export import export_now\n\ndef post_export(actor, body, repository, storage):\n    return export_now(actor, body[\"report_id\"], repository, storage)\n",
+        "app/worker.py": "def run_cleanup(repository, storage):\n    for key in repository.expired_objects():\n        storage.remove_if_present(key)\n"
+      }
+    },
+    {
+      "id": "code",
+      "request": "Design the refactor for the selected pricing finding in docs/audits/pricing.md. Keep existing behavior and public call signatures. Include file organization and the callers that must migrate. We need a concise implementation handoff, not another audit or an implementation.",
+      "files": {
+        "README.md": "# Pricing\nA Python application has API, jobs, CLI, and pricing packages. Currency amounts use Decimal. Discounts are fractions from zero through one. The established rule rounds each discounted line to cents with ROUND_HALF_UP before summing. Negative or greater-than-one discounts raise ValueError(\"discount\"). Public caller functions and their signatures must remain compatible. There is no external pricing provider or configurable policy registry.\n",
+        "docs/audits/pricing.md": "# Selected finding\nThe same discount-validation and line-rounding rule appears in api/orders.py, jobs/invoices.py, and cli/quotes.py. A pricing-rule change currently requires three edits. Centralize that rule while preserving per-line rounding and caller contracts. The finding does not settle the owning module or interface. This is the only selected work; an unrelated TODO in api/orders.py is out of scope.\n",
+        "api/orders.py": "from decimal import Decimal, ROUND_HALF_UP\n\ndef order_total(prices, discount):\n    if not Decimal(\"0\") <= discount <= Decimal(\"1\"):\n        raise ValueError(\"discount\")\n    # TODO: unrelated request tracing.\n    return sum(((price * (1 - discount)).quantize(Decimal(\"0.01\"), rounding=ROUND_HALF_UP) for price in prices), Decimal(\"0.00\"))\n",
+        "jobs/invoices.py": "from decimal import Decimal, ROUND_HALF_UP\n\ndef invoice_total(prices, discount):\n    if not Decimal(\"0\") <= discount <= Decimal(\"1\"):\n        raise ValueError(\"discount\")\n    return sum(((price * (1 - discount)).quantize(Decimal(\"0.01\"), rounding=ROUND_HALF_UP) for price in prices), Decimal(\"0.00\"))\n",
+        "cli/quotes.py": "from decimal import Decimal, ROUND_HALF_UP\n\ndef quote_total(prices, discount):\n    if not Decimal(\"0\") <= discount <= Decimal(\"1\"):\n        raise ValueError(\"discount\")\n    return sum(((price * (1 - discount)).quantize(Decimal(\"0.01\"), rounding=ROUND_HALF_UP) for price in prices), Decimal(\"0.00\"))\n",
+        "pricing/__init__.py": "",
+        "tests/test_prices.py": "from decimal import Decimal\nfrom api.orders import order_total\nfrom jobs.invoices import invoice_total\nfrom cli.quotes import quote_total\n\ndef test_line_rounding():\n    for total in (order_total, invoice_total, quote_total):\n        assert total([Decimal(\"0.05\"), Decimal(\"0.05\")], Decimal(\"0.1\")) == Decimal(\"0.10\")\n"
+      }
+    }
+  ]
+}

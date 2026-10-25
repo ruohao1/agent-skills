@@ -1,0 +1,17 @@
+{
+  "name": "software-design",
+  "version": "0.1.0",
+  "description": "Design system architecture and code structure for selected changes, with concise saved handoffs.",
+  "author": {
+    "name": "ruohao1",
+    "url": "https://github.com/ruohao1"
+  },
+  "skills": "./skills/",
+  "repository": "https://github.com/ruohao1/agent-skills",
+  "keywords": [
+    "architecture",
+    "code-design",
+    "interfaces",
+    "refactoring"
+  ]
+}

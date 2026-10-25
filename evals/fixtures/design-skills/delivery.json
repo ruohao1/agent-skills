@@ -1,0 +1,31 @@
+{
+  "notice": "Synthetic filesystem cases. Use the named design skill independently, without companion skills. Each case has a separate project. Save the normal final response for each case; inspect only that project's facts.",
+  "cases": [
+    {
+      "id": "default",
+      "request": "Design the import recovery experience from the supplied brief and contract. Keep the existing UI patterns. Do not implement it.",
+      "seed_files": {
+        "docs/designs/README.md": "# Design index\n\nKeep this existing index unchanged.\n"
+      }
+    },
+    {
+      "id": "update",
+      "request": "Use the supplied import contract to update only the Recovery section of notes/decisions/imports.md. Preserve every other section unchanged. No code changes.",
+      "seed_files": {
+        "notes/decisions/imports.md": "# Imports\n\n## Scope\nKeep the current CSV workflow and existing components.\n\n## Recovery\nCreate a new request ID after every timeout and retry the entire file.\n\n## Visual rules\nUse the existing status banner and table. This section is already approved.\n"
+      }
+    },
+    {
+      "id": "custom",
+      "request": "Design the import recovery flow and save it to notes/recovery.md. Use the supplied brief and contract. Do not implement it.",
+      "seed_files": {
+        "notes/keep.md": "This unrelated note must stay unchanged.\n"
+      }
+    },
+    {
+      "id": "text-only",
+      "request": "Use only this sentence. Replace Completed with Accepted and return the sentence only: 'Completed: your import was queued.'",
+      "seed_files": {}
+    }
+  ]
+}

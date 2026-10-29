@@ -1,7 +1,7 @@
 {
   "name": "linear-workflows",
-  "version": "0.5.0",
-  "description": "Read current Linear project context, then write concise issues, research comments, and final wrap-ups with verified evidence.",
+  "version": "0.7.0",
+  "description": "Check Linear context, start issue work promptly, maintain project state and write concise issues, comments and wrap-ups.",
   "author": {
     "name": "ruohao1",
     "url": "https://github.com/ruohao1"
@@ -13,18 +13,20 @@
     "context",
     "issues",
     "comments",
-    "wrap-up"
+    "wrap-up",
+    "maintenance",
+    "status"
   ],
   "interface": {
     "displayName": "Linear Workflows",
-    "shortDescription": "Project context, issues, comments, and wrap-ups.",
-    "longDescription": "Check relevant Linear activity before project work. Write grounded issues and research comments, then record a final TL;DR before moving completed work to Done.",
+    "shortDescription": "Current project context, status and clear issue history.",
+    "longDescription": "Check relevant activity and move selected issues to active work before substantive work. Reconcile project state, preserve history, and save final summaries before completion.",
     "developerName": "ruohao1",
     "category": "Productivity",
     "capabilities": [],
     "defaultPrompt": [
       "Check current Linear context before starting this task.",
-      "Write and save a Linear issue for this change.",
+      "Review this Linear project and clean up verified stale information.",
       "Finish this Linear issue and move it to Done."
     ]
   }

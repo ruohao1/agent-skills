@@ -1,5 +1,9 @@
 # Linear context evaluation
 
+This is the original 0.5.0 discovery protocol. Its read-only scope covers context
+discovery. The later active-status and maintenance behavior is checked separately
+in the [maintenance and status protocol](linear-maintenance.md).
+
 Compare five fresh baseline contexts with five fresh contexts that also have
 `check-linear-context`. Keep personal instructions, the existing three Linear
 skills, tool availability, and synthetic fixtures identical. No model override

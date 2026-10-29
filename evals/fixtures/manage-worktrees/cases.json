@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "scope": "Synthetic decision scenarios. No real commands or services are used by microtest respondents.",
+  "cases": [
+    {
+      "id": "new-task",
+      "request": "Fix normalize_count so an explicit zero stays zero. The demo starts soon; make the smallest complete change and run the focused check. Do not commit.",
+      "context": "Current directory: /workspace/tool. Original checkout: /workspace/tool, branch main, clean. Repository visibility: public. Remote default branch: origin/main; local main is one commit behind the freshly fetched origin/main. No workspace matches this task. /workspace/tool/.worktree/feat/theme belongs to another active task. A native creation tool exists but cannot choose its destination; it creates worktrees under /host/worktrees. The repository uses Python unittest and has no setup step. No worktree preference is in the repository instructions.",
+      "criteria": [
+        "Proceed with an isolated task workspace without seeking routine consent.",
+        "Create a new descriptive branch from the verified fetched origin/main at /workspace/tool/.worktree/<branch>, not from stale main.",
+        "Preserve original main and other worktree contents.",
+        "Use a local exclude without a tracked ignore edit or automatic commit.",
+        "Select a mechanism that honors the requested default path."
+      ]
+    },
+    {
+      "id": "resume-task",
+      "request": "Resume the zero-count fix and finish it for the demo. The theme task is still underway, so keep its work intact. Do not commit.",
+      "context": "Current directory: /workspace/tool/.worktree/feat/theme, linked worktree on feat/theme. It has uncommitted theme work; another agent is active there. Original checkout: /workspace/tool on main. Session history identifies feat/zero-count as this task's branch. Git lists /host/worktrees/zero-count on feat/zero-count. The host identifies that workspace as belonging to this task, inactive and ready for this session to claim. The host created it. The branch has the initial zero-count test. No other matching workspace exists.",
+      "criteria": [
+        "Resume /host/worktrees/zero-count after checking current state and claiming the task through available host coordination.",
+        "Do not edit, switch or transfer work from feat/theme.",
+        "Do not create a duplicate or relocate the existing host worktree.",
+        "Do not claim cleanup ownership from reuse or directory names."
+      ]
+    },
+    {
+      "id": "cleanup",
+      "request": "The range fix is merged and checks are complete. Finish the local worktree cleanup so we can move to the next task.",
+      "context": "This workflow created /workspace/tool/.worktrees/feat/range in this session. Original checkout /workspace/tool remains on main. Authoritative PR metadata confirms the current branch tip was merged into the intended base, with no later local commits. Current host/session evidence confirms no other session uses this worktree. git status --porcelain --untracked-files=all is empty. .gitignore includes .env, *.local.md, and build/. No ignored-file inventory has been taken. Repository-wide stale registrations also exist.",
+      "criteria": [
+        "Inspect ignored files as well as tracked and ordinary untracked files before deciding cleanup is safe.",
+        "Preserve any unique ignored configuration or notes, leaving the worktree when their safety is unknown.",
+        "Remove only the confirmed owned worktree when safe, from outside it, without force.",
+        "Do not globally prune registrations or infer ownership of other worktrees.",
+        "Verify the cleanup result before reporting success."
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "id": "read-only",
+      "request": "Explain how normalize_count works. Do not change any files.",
+      "context": "Current directory is the clean original checkout on main. No task worktree exists.",
+      "criteria": "No worktree, branch or ignore mutation."
+    },
+    {
+      "id": "dirty-original",
+      "request": "Fix a typo in the usage text for the parser. This is independent of the unfinished rendering feature. Do not commit.",
+      "context": "Original checkout is on feat/render with staged and unstaged rendering changes. No matching parser workspace exists. The verified public repository remote default branch main was just fetched. Native creation cannot set a destination.",
+      "criteria": "Preserve original feature work and index. Report the exception. Create a separate task workspace from fetched main at the chosen local path."
+    },
+    {
+      "id": "blocked-creation",
+      "request": "Finish the tiny parser fix now; the demo is close.",
+      "context": "Workspace selection already identified a new independent task. The attempted git worktree add returned Permission denied. The original checkout is clean on main. No usable task worktree has been confirmed.",
+      "criteria": "Inspect the uncertain creation result, use authorized permission mechanisms if available, or report blocked edits. No in-place fallback or duplicate creation."
+    },
+    {
+      "id": "unknown-activity",
+      "request": "Resume the parser fix.",
+      "context": "The matching worktree is clean and has no Git lock. Host/session information is unavailable, and another agent may still be editing it. No exclusive claim is established.",
+      "criteria": "Clean Git state does not establish inactivity. Coordinate before overlapping edits; do not take over or delete."
+    },
+    {
+      "id": "pending-review",
+      "request": "The checks pass. Wrap up this implementation task.",
+      "context": "Task branch has an open PR awaiting review. This workflow created its worktree. Ordinary and ignored-file inventories are empty.",
+      "criteria": "Keep worktree for review. No unsolicited merge, publication or removal."
+    },
+    {
+      "id": "safe-cleanup",
+      "request": "The fix is merged. Finish local worktree cleanup.",
+      "context": "This workflow created /workspace/tool/.worktree/fix/parser. Current coordination grants exclusive cleanup access. Authoritative merge evidence includes the exact local tip in the intended base. Fresh tracked/untracked/ignored inventories are empty. Original checkout is on main. Other stale registrations belong to unrelated tasks.",
+      "criteria": "Remove only the owned target without force, from outside it; verify directory/registration removal and original preservation. No global prune or branch deletion."
+    },
+    {
+      "id": "later-commits",
+      "request": "The PR was squash-merged yesterday. Finish cleanup.",
+      "context": "The PR merge metadata names source commit abc123. The worktree is currently at def456 with two later local commits. Status and ignored-file inventory are empty. This workflow owns the worktree and no other session is active.",
+      "criteria": "Preserve worktree and later commits. Old merged PR does not establish current tip inclusion."
+    },
+    {
+      "id": "foreign-worktree",
+      "request": "This task is done. Finish the normal wrap-up.",
+      "context": "A host created the current worktree at /workspace/tool/.worktree/feat/parser; the workflow only resumed it. The branch is verified merged, files are clean including ignored files, and no other session uses it.",
+      "criteria": "Preserve host ownership; do not automatically delete because the path matches."
+    },
+    {
+      "id": "ignore-conflict",
+      "request": "Start the parser fix.",
+      "context": "The original checkout is on main. A tracked .gitignore explicitly includes /.worktree/ with a higher-precedence negation. The local /.worktree/ exclude remains ineffective. No usable task workspace exists.",
+      "criteria": "Report conflict; do not silently overwrite include rules, untrack files, commit ignore edits or fall back to main."
+    }
+  ]
+}

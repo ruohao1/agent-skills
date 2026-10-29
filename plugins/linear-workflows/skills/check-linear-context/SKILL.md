@@ -49,5 +49,35 @@ links and material uncertainty. Use short, factual sentences. Keep private
 Linear details out of public artifacts. Once relevant context is established,
 continue the task rather than producing a project-wide report.
 
-This check is read-only. Do not post comments, claim work, change status, or
-save notes. It supplies context, not authorization for external updates.
+Context discovery is read-only. It does not authorize comments, ownership
+changes, saved notes or unrelated issue updates.
+
+## Start the selected issue
+
+When requested work on a verified issue begins, move that issue to the team's
+actual active-work state before substantive implementation, research, a planning
+deliverable or review fixes. This routine status update is part of starting the
+authorized task; do not wait until completion or ask for separate approval.
+Inspection, triage, issue-copy edits and review-only requests do not start work.
+
+Use the team's existing workflow. In Progress and In Review can both have a
+started state type; select the actual active-work state, not the first match.
+An already active issue needs no write. Requested review fixes resume active
+work; reviewing an implementation leaves its status alone. Do not implicitly
+reopen completed or cancelled issues. If the issue or active state is ambiguous,
+ask one focused question and continue independent work.
+
+Read the current status before writing and resolve conflicting new state or
+decisions. Update only this issue's status; preserve ownership, parent and sibling
+states, and other fields. Verify the result. After an ambiguous timeout, reread
+before retrying. If synchronization is unavailable, report the gap and continue
+unblocked work without claiming that the status changed.
+
+## Notice maintenance opportunities
+
+If the checked context reveals stale status claims, superseded work, unclear
+remaining work or descriptions crowded by progress history, suggest one
+focused cleanup with a concrete example. Continue the original task when it
+is unblocked. Do not repeat an unchanged proposal or widen this check into a
+full backlog review. `maintain-linear-project`, when available, handles the
+separate cleanup within the user's authorization; context checking works without it.

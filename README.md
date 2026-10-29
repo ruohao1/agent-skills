@@ -4,7 +4,7 @@ A personal catalog of custom and selected upstream skills, plugins, MCP servers,
 
 ## Set up a fresh or existing installation
 
-The six maintained writing skills include STE-inspired guidance for clear English prose, with facts and technical references preserved. Each skill works independently. The optional personal preset applies the same preference to general agent replies. This is a writing preference, not a claim of formal ASD-STE100 compliance. See the [writing evaluation](evals/results/2026-10-24-ste-writing.md).
+The maintained writing skills include STE-inspired guidance for clear English prose, with facts and technical references preserved. Each skill works independently. The optional personal preset applies the same preference to general agent replies. This is a writing preference, not a claim of formal ASD-STE100 compliance. See the [writing evaluation](evals/results/2026-10-24-ste-writing.md).
 
 Install your coding agents, Python 3.11+, Node 22.20.0+, npm/npx and Git first. Then:
 
@@ -24,13 +24,13 @@ python3 scripts/setup.py install --category engineering --agent claude-code --sc
 python3 scripts/setup.py install --skill product-brief tdd --agent opencode --scope project --project /path/to/project
 ```
 
-Choose any combination of `codex`, `claude-code`, and `opencode`. “All” means the 23 selected skills, not entire upstream repositories. Add `--yes` for noninteractive installation after reviewing the plan; it never overrides a conflict.
+Choose any combination of `codex`, `claude-code`, and `opencode`. “All” means the 28 selected skills, not entire upstream repositories. Add `--yes` for noninteractive installation after reviewing the plan; it never overrides a conflict.
 
 See [setup and maintenance](docs/setup.md) for preservation rules, configuration roots, native plugins, partial failures and updates.
 
 ## Personal configuration
 
-The optional [personal preset](configs/personal/README.md) adds shared working preferences, a useful next-action suggestion after tasks, and a `personal-reviewer` agent. One instruction source serves all three hosts. It inherits your model and connections. Select it separately from skills; `--all` installs the 23 selected skills only.
+The optional [personal preset](configs/personal/README.md) adds shared working preferences, a useful next-action suggestion after tasks, and a `personal-reviewer` agent. One instruction source serves all three hosts. It inherits your model and connections. Select it separately from skills; `--all` installs the 28 selected skills only.
 
 ```sh
 python3 scripts/setup.py plan --preset personal --agent codex claude-code opencode --scope global
@@ -58,11 +58,12 @@ for prerequisites, paths, and activation checks.
 
 | Category | Skills | Maintainer |
 | --- | --- | --- |
-| Product Design | [product-brief](plugins/product-design/skills/product-brief/SKILL.md) | Custom, maintained here |
+| Product Design | [product-brief](plugins/product-design/skills/product-brief/SKILL.md), [design-product](plugins/product-design/skills/design-product/SKILL.md) | Custom, maintained here |
 | Product Design | `archify` | [tt-a1i/archify](https://github.com/tt-a1i/archify) |
 | Product Design | `prototype` | [mattpocock/skills](https://github.com/mattpocock/skills) |
-| Engineering | [check-linear-context](plugins/linear-workflows/skills/check-linear-context/SKILL.md), [write-linear-issue](plugins/linear-workflows/skills/write-linear-issue/SKILL.md), [write-linear-comment](plugins/linear-workflows/skills/write-linear-comment/SKILL.md), [wrap-up-linear-issue](plugins/linear-workflows/skills/wrap-up-linear-issue/SKILL.md) | Custom, maintained here |
-| Engineering | [write-commit](plugins/git-workflows/skills/write-commit/SKILL.md), [write-pull-request](plugins/git-workflows/skills/write-pull-request/SKILL.md) | Custom, maintained here |
+| Engineering | [design-architecture](plugins/software-design/skills/design-architecture/SKILL.md), [design-code](plugins/software-design/skills/design-code/SKILL.md) | Custom, maintained here |
+| Engineering | [check-linear-context](plugins/linear-workflows/skills/check-linear-context/SKILL.md), [maintain-linear-project](plugins/linear-workflows/skills/maintain-linear-project/SKILL.md), [write-linear-issue](plugins/linear-workflows/skills/write-linear-issue/SKILL.md), [write-linear-comment](plugins/linear-workflows/skills/write-linear-comment/SKILL.md), [wrap-up-linear-issue](plugins/linear-workflows/skills/wrap-up-linear-issue/SKILL.md) | Custom, maintained here |
+| Engineering | [manage-worktrees](plugins/git-workflows/skills/manage-worktrees/SKILL.md), [write-commit](plugins/git-workflows/skills/write-commit/SKILL.md), [write-pull-request](plugins/git-workflows/skills/write-pull-request/SKILL.md) | Custom, maintained here |
 | Engineering | [audit-code](plugins/code-quality/skills/audit-code/SKILL.md), [audit-scale](plugins/code-quality/skills/audit-scale/SKILL.md), [audit-security](plugins/code-quality/skills/audit-security/SKILL.md), [audit-repo](plugins/code-quality/skills/audit-repo/SKILL.md) | Custom, maintained here |
 | Engineering | `codebase-design`, `domain-modeling`, `diagnosing-bugs`, `tdd` | [mattpocock/skills](https://github.com/mattpocock/skills) |
 | Engineering | `ponytail`, `ponytail-review`, `ponytail-audit`, `ponytail-debt`, `ponytail-gain`, `ponytail-help` | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) |
@@ -79,9 +80,13 @@ npx skills@latest add ruohao1/agent-skills
 
 This direct route follows `latest` and does not use the setup coordinator's conflict checks. It does not install the remote catalog. The coordinator uses the installer version pinned in `catalog.json`.
 
-[Linear Workflows](plugins/linear-workflows/README.md) provides `check-linear-context`, `write-linear-issue`, `write-linear-comment`, and `wrap-up-linear-issue`. The context skill reads relevant project activity at session start, on resumption, and before each new substantial task. It works independently and keeps the check read-only. Research comments tell the story; the wrap-up saves a final TL;DR at the top of the description before the agent moves an issue to Done. Writing includes saving to Linear unless you request a draft; code-dependent comments stay unsaved until verified permanent code links are available. Connect Linear separately in your agent; the plugin does not bundle a connector or credentials. The [issue results](evals/results/2026-10-21-write-linear-issue.md), [comment results](evals/results/2026-10-21-write-linear-comment.md), and [wrap-up results](evals/results/2026-10-23-linear-wrap-up.md) distinguish simulated behavior from installation checks.
+[Product Design](plugins/product-design/README.md) provides `product-brief` for the problem and scope, and `design-product` for the selected solution’s user flows, interactions, states, and recovery. Designs are saved under `docs/designs/` by default; explicit destinations and text-only requests take precedence. Each skill works independently. See the [design evaluation](evals/design-skills.md).
 
-[Git Workflows](plugins/git-workflows/README.md) provides `write-commit` and `write-pull-request`: small local commits, verified agent attribution, concise hosted PRs, and preservation of unrelated work. Public repositories omit Linear references from commits and PR content, including implementation and review trackers; PR writing skips linking that could expose them. Private issue-specific branches use the supplied issue branch name. See the [commit results](evals/results/2026-10-21-write-commit.md) and [PR results](evals/results/2026-10-23-write-pull-request.md).
+[Software Design](plugins/software-design/README.md) provides `design-architecture` for system responsibilities, data ownership, and runtime contracts, and `design-code` for modules, interfaces, file organization, and caller migration. Each saves a focused handoff or updates the relevant design. Audits identify problems; design resolves consequential choices for selected work. A straightforward fix needs no extra design stage. See the [design results](evals/results/2026-10-25-design-skills.md).
+
+[Linear Workflows](plugins/linear-workflows/README.md) provides context checks, project maintenance, issue and comment writing, and final wrap-ups. It reads relevant activity before new or resumed work, then moves a verified selected issue to its active-work state before substantive work begins. Discovery and review-only requests remain read-only. Authorized cleanup reconciles current state and preserves crowded history in a verified linked snapshot. Research comments tell the story; wrap-up saves a final TL;DR before an authorized completed-state transition. Each skill works independently without an AGENTS.md change. Connect Linear separately; the plugin supplies no connector or credentials. See the [context results](evals/results/2026-10-25-check-linear-context.md), [publication checks](evals/results/2026-10-29-linear-workflows.md), and [wrap-up results](evals/results/2026-10-23-linear-wrap-up.md) for evidence and limits.
+
+[Git Workflows](plugins/git-workflows/README.md) provides `manage-worktrees`, `write-commit` and `write-pull-request`: automatic task isolation, matching workspace resumption, verified cleanup, small local commits, verified agent attribution, concise hosted PRs, and preservation of unrelated work. Public repositories omit Linear references from commits and PR content, including implementation and review trackers; PR writing skips linking that could expose them. Private issue-specific branches use the supplied issue branch name. See the [commit results](evals/results/2026-10-21-write-commit.md) and [PR results](evals/results/2026-10-23-write-pull-request.md).
 
 [Code Quality](plugins/code-quality/README.md) provides `audit-code` for maintainability, `audit-scale` for data growth, concurrency, and recovery, and `audit-security` for application, dependency, CI, and configuration risks. `audit-repo` runs all three and combines shared findings. Reports are saved under `docs/audits/` in the audited repository unless chat-only output is requested. New reports are ignored by Git unless tracking is requested or already established. Applying fixes and creating issues remain separate requested work. See the [coverage comparison with Ponytail](docs/audit-coverage.md) for observed benefits and remaining gaps.
 

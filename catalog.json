@@ -43,6 +43,14 @@
       "description": "Frame the user problem, evidence, scope, and success criteria."
     },
     {
+      "name": "design-product",
+      "category": "product-design",
+      "ownership": "custom",
+      "source": "local",
+      "path": "plugins/product-design/skills/design-product",
+      "description": "Design user flows, interactions, recovery, and visual behavior for a selected change."
+    },
+    {
       "name": "archify",
       "category": "product-design",
       "ownership": "upstream",
@@ -59,12 +67,36 @@
       "description": "Explore UI alternatives and state models."
     },
     {
+      "name": "design-architecture",
+      "category": "engineering",
+      "ownership": "custom",
+      "source": "local",
+      "path": "plugins/software-design/skills/design-architecture",
+      "description": "Design system responsibilities, data ownership, runtime contracts, and compatibility."
+    },
+    {
+      "name": "design-code",
+      "category": "engineering",
+      "ownership": "custom",
+      "source": "local",
+      "path": "plugins/software-design/skills/design-code",
+      "description": "Design module interfaces, dependencies, file organization, and caller migration."
+    },
+    {
       "name": "check-linear-context",
       "category": "engineering",
       "ownership": "custom",
       "source": "local",
       "path": "plugins/linear-workflows/skills/check-linear-context",
-      "description": "Read relevant Linear activity before starting or resuming project work and before each new substantial task."
+      "description": "Check current Linear context and start authorized issue work in the active state before substantive work."
+    },
+    {
+      "name": "maintain-linear-project",
+      "category": "engineering",
+      "ownership": "custom",
+      "source": "local",
+      "path": "plugins/linear-workflows/skills/maintain-linear-project",
+      "description": "Reconcile Linear project state, preserve issue history and identify decisions needed for cleanup."
     },
     {
       "name": "write-linear-issue",
@@ -89,6 +121,14 @@
       "source": "local",
       "path": "plugins/linear-workflows/skills/wrap-up-linear-issue",
       "description": "Save a concise final TL;DR before moving a Linear issue to its completed state."
+    },
+    {
+      "name": "manage-worktrees",
+      "category": "engineering",
+      "ownership": "custom",
+      "source": "local",
+      "path": "plugins/git-workflows/skills/manage-worktrees",
+      "description": "Isolate repository tasks automatically, resume matching worktrees and preserve local data during verified cleanup."
     },
     {
       "name": "write-commit",
@@ -223,7 +263,19 @@
     {
       "name": "product-design",
       "skills": [
-        "product-brief"
+        "product-brief",
+        "design-product"
+      ],
+      "native": {
+        "marketplace": "personal",
+        "repository": "ruohao1/agent-skills"
+      }
+    },
+    {
+      "name": "software-design",
+      "skills": [
+        "design-architecture",
+        "design-code"
       ],
       "native": {
         "marketplace": "personal",
@@ -234,6 +286,7 @@
       "name": "linear-workflows",
       "skills": [
         "check-linear-context",
+        "maintain-linear-project",
         "write-linear-issue",
         "write-linear-comment",
         "wrap-up-linear-issue"
@@ -246,6 +299,7 @@
     {
       "name": "git-workflows",
       "skills": [
+        "manage-worktrees",
         "write-commit",
         "write-pull-request"
       ],

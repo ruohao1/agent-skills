@@ -6,7 +6,11 @@ Reconstructed from repository documentation and evaluation records. Dates reflec
 
 ### Added
 
-- **Linear Workflows 0.5.0:** added `check-linear-context` for read-only project context at session start, on resumption, and before each new substantial task. It checks relevant decisions, completed and overlapping work, and blockers without changing shared instructions or posting updates.
+- **Linear Workflows 0.7.0:** added automatic project context checks and early active-status updates for selected work, plus authorized project maintenance that preserves issue requirements and history. Reviews and context discovery remain read-only; completion requires verified evidence and a saved final summary.
+- **Git Workflows 0.4.0:** added `manage-worktrees` for automatic task isolation at `.worktree/<branch>`, matching workspace resumption and cleanup after verified merge. It preserves the original checkout, other active tasks and unique ignored files.
+
+- **Product Design 0.3.0:** added `design-product` for independently scoped experience designs, saved handoffs, and explicit recovery constraints.
+- **Software Design 0.1.0:** added independent `design-architecture` and `design-code` skills for system contracts, module interfaces, file organization, and caller migration. Designs update existing documents or save under `docs/designs/`, with explicit paths and text-only requests preserved.
 - **Code Quality 0.2.0:** added `audit-scale` for data growth, concurrency, and recovery; `audit-security` for code, dependencies, CI, configuration, and secrets; and `audit-repo` to coordinate all three custom audits. Reports include confidence, effort, and grouped checks. Added matched comparisons with Ponytail and a coverage guide.
 - **Code Quality 0.1.0:** added `audit-code` for readability and maintainability as code grows. Reports include all supported findings, grouped by root cause and ranked by impact, with suggested refactors and estimated effort.
 - **Linear Workflows 0.4.0:** `wrap-up-linear-issue` saves and verifies a short TL;DR before an agent makes an authorized transition to Done. It preserves the original task and links decisive evidence.

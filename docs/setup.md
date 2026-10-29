@@ -1,6 +1,6 @@
 # Set up your tools
 
-The catalog contains 23 skills, combining this repository's custom skills with selected upstream tools. Product Design and Engineering are categories; custom and upstream identify who maintains each tool. External sources stay upstream and their portable skill revisions are pinned in `catalog.json`.
+The catalog contains 28 skills, combining this repository's custom skills with selected upstream tools. Product Design and Engineering are categories; custom and upstream identify who maintains each tool. External sources stay upstream and their portable skill revisions are pinned in `catalog.json`.
 
 Install the coding agents first. The setup command needs Python 3.11+. Installing skills also needs Node 22.20.0+, npm/npx, Git, and access to GitHub and npm. Native plugin installation needs the selected host CLI. Applying a local configuration preset needs only Python. Authentication and hook trust remain host setup steps.
 
@@ -25,7 +25,7 @@ Install the complete curated portable selection for chosen agents:
 python3 scripts/setup.py install --all --agent codex claude-code opencode --scope global
 ```
 
-“All skills” means the 23 named skills, not every skill in upstream repositories. Configuration presets and MCP servers are selected separately. Only list the agents you want. Shared compatibility directories may make a skill visible to another agent that reads the same directory.
+“All skills” means the 28 named skills, not every skill in upstream repositories. Configuration presets and MCP servers are selected separately. Only list the agents you want. Shared compatibility directories may make a skill visible to another agent that reads the same directory.
 
 Choose a category, particular skills, or a complete plugin's skills:
 
@@ -55,7 +55,7 @@ Receipts live at `~/.agents/marketplace/personal/state.json` for global scope, o
 
 ## Configuration presets
 
-The personal preset includes STE-inspired English writing preferences for general replies. The six maintained writing skills contain that guidance themselves; installing one does not require or install the preset. Neither route enforces the full ASD-STE100 dictionary or claims formal compliance. See the [writing evaluation](../evals/results/2026-10-24-ste-writing.md).
+The personal preset includes STE-inspired English writing preferences for general replies. The maintained writing skills contain that guidance themselves; installing one does not require or install the preset. Neither route enforces the full ASD-STE100 dictionary or claims formal compliance. See the [writing evaluation](../evals/results/2026-10-24-ste-writing.md).
 
 The [personal preset](../configs/personal/README.md) supplies one shared instruction source and native reviewer definitions for all three hosts. Setup installs the shared content as `AGENTS.md` for Codex and OpenCode, or `CLAUDE.md` for Claude Code. It is independent of skill and plugin installation:
 
@@ -173,7 +173,7 @@ It discovers this repository's local custom skills, not the remote setup catalog
 
 Updating or replacing content is a separate decision. Inspect the exact installed path and source, preserve local edits you want to keep, and use the upstream installer's narrowly selected add/reinstall or native plugin update command. Avoid an unscoped update-all command when you only intend to change one tool. Re-run the setup preview afterward; changed coordinator-managed content requires review rather than automatic receipt adoption.
 
-Retired local invocations map to upstream tools: `product-diagrams` → `archify`, `product-wireframes` → `prototype`. The setup does not automatically uninstall old copies. Remove a retired installation through the route that owns it when you choose to migrate. `product-design-review` is also retired after baseline evaluation found no useful custom guidance to add; request a design review directly. The three engineering candidates from the original rewrite were not shipped for the same reason. Engineering now includes the custom [Linear Workflows](../plugins/linear-workflows/README.md), [Git Workflows](../plugins/git-workflows/README.md), and [Code Quality](../plugins/code-quality/README.md) plugins alongside selected upstream skills, including the Ponytail bundle.
+Retired local invocations map to upstream tools: `product-diagrams` → `archify`, `product-wireframes` → `prototype`. The setup does not automatically uninstall old copies. Remove a retired installation through the route that owns it when you choose to migrate. `product-design-review` is also retired after baseline evaluation found no useful custom guidance to add; request a design review directly. The three engineering candidates from the original rewrite were not shipped for the same reason. Engineering now includes the custom [Software Design](../plugins/software-design/README.md), [Linear Workflows](../plugins/linear-workflows/README.md), [Git Workflows](../plugins/git-workflows/README.md), and [Code Quality](../plugins/code-quality/README.md) plugins alongside selected upstream skills, including the Ponytail bundle.
 
 ## Validation evidence
 
@@ -198,10 +198,21 @@ The subsequent `write-linear-issue` addition passed separate [behavioral and por
 
 Linear Workflows 0.2.0 adds `write-linear-comment`, with its own [behavioral and portable installation results](../evals/results/2026-10-21-write-linear-comment.md). Its code-dependent comments require a verified published source permalink before saving. Native activation and authenticated comment operations remain untested.
 
-Linear Workflows 0.5.0 adds `check-linear-context`. Install it independently for all three agents with:
+Product Design 0.3.0 adds `design-product` for flows, interactions, recovery, and visual experience. Install it independently:
 
 ```sh
-python3 scripts/setup.py install --skill check-linear-context --agent codex claude-code opencode --scope global
+python3 scripts/setup.py install --skill design-product --agent codex claude-code opencode --scope global
 ```
 
-Its description triggers a read-only check at session start, on resumption, and before each new substantial task in a project that uses Linear. It reuses fresh context during the same task and honors local-only requests. Connect Linear separately. No personal preset, shared instruction change, or session hook is installed. See the [context results](../evals/results/2026-10-25-check-linear-context.md) for discovery and installation checks and their limits.
+Software Design 0.1.0 adds independent `design-architecture` and `design-code` skills. Select one skill or the complete bundle:
+
+```sh
+python3 scripts/setup.py install --skill design-code --agent codex --scope global
+python3 scripts/setup.py install --plugin software-design --agent codex claude-code opencode --scope global
+```
+
+All three design skills save concise handoffs under `docs/designs/` by default. An existing document, explicit destination, or text-only request takes precedence. Each works without a companion skill, audit, or mandatory implementation step. See the [design evaluation](../evals/design-skills.md) and [results](../evals/results/2026-10-25-design-skills.md) for the comparison method and validation scope.
+
+Git Workflows 0.4.0 adds `manage-worktrees` for automatic isolation before repository edits, matching workspace resumption and verified cleanup after merge. New worktrees use `repo/.worktree/<branch>`. The skill works without the personal preset and supplies no background service or cross-host lock. See the [worktree results](../evals/results/2026-10-28-manage-worktrees.md) for observed behavior and installation limits.
+
+Linear Workflows 0.7.0 adds `check-linear-context` and `maintain-linear-project`. Select either independently; no preset or shared instruction edit is required. Context discovery needs read access. Starting authorized work on a verified issue also needs status-update access. Project cleanup needs the relevant issue/document operations and preserves unresolved decisions. Existing writing, comments and completion rules remain in force. See the [original context evaluation](../evals/results/2026-10-25-check-linear-context.md) and [current publication checks](../evals/results/2026-10-29-linear-workflows.md) for the tested scopes and limits.

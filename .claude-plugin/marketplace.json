@@ -14,6 +14,11 @@
       "category": "Productivity"
     },
     {
+      "name": "software-design",
+      "source": "./plugins/software-design",
+      "category": "Productivity"
+    },
+    {
       "name": "linear-workflows",
       "source": "./plugins/linear-workflows",
       "category": "Productivity"

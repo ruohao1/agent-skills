@@ -1,0 +1,30 @@
+{
+  "name": "software-design",
+  "version": "0.1.0",
+  "description": "Design system architecture and code structure for selected changes, with concise saved handoffs.",
+  "author": {
+    "name": "ruohao1",
+    "url": "https://github.com/ruohao1"
+  },
+  "skills": "./skills/",
+  "repository": "https://github.com/ruohao1/agent-skills",
+  "keywords": [
+    "architecture",
+    "code-design",
+    "interfaces",
+    "refactoring"
+  ],
+  "interface": {
+    "displayName": "Software Design",
+    "shortDescription": "Architecture and code design handoffs.",
+    "longDescription": "Resolve system responsibilities, data ownership, module interfaces, and caller migration for selected changes. Each design skill works independently and saves a concise handoff.",
+    "developerName": "ruohao1",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": [
+      "Design the architecture for this selected change.",
+      "Design the module boundaries and caller migration for this refactor.",
+      "Update this design with the agreed constraints."
+    ]
+  }
+}

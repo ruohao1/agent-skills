@@ -1,7 +1,7 @@
 {
   "name": "linear-workflows",
-  "version": "0.5.0",
-  "description": "Read current Linear project context, then write concise issues, research comments, and final wrap-ups with verified evidence.",
+  "version": "0.7.0",
+  "description": "Check Linear context, start issue work promptly, maintain project state and write concise issues, comments and wrap-ups.",
   "author": {
     "name": "ruohao1",
     "url": "https://github.com/ruohao1"
@@ -13,6 +13,8 @@
     "context",
     "issues",
     "comments",
-    "wrap-up"
+    "wrap-up",
+    "maintenance",
+    "status"
   ]
 }

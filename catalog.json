@@ -107,6 +107,14 @@
       "description": "Save a concise final TL;DR before moving a Linear issue to its completed state."
     },
     {
+      "name": "manage-worktrees",
+      "category": "engineering",
+      "ownership": "custom",
+      "source": "local",
+      "path": "plugins/git-workflows/skills/manage-worktrees",
+      "description": "Isolate repository tasks automatically, resume matching worktrees and preserve local data during verified cleanup."
+    },
+    {
       "name": "write-commit",
       "category": "engineering",
       "ownership": "custom",
@@ -273,6 +281,7 @@
     {
       "name": "git-workflows",
       "skills": [
+        "manage-worktrees",
         "write-commit",
         "write-pull-request"
       ],

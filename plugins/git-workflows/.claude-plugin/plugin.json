@@ -1,7 +1,7 @@
 {
   "name": "git-workflows",
-  "version": "0.2.1",
-  "description": "Write reviewable commits and pull requests with verified context, agent attribution, and public-repository privacy.",
+  "version": "0.4.0",
+  "description": "Isolate task worktrees and write reviewable commits and pull requests with verified context and repository privacy.",
   "author": {
     "name": "ruohao1",
     "url": "https://github.com/ruohao1"
@@ -11,6 +11,7 @@
   "keywords": [
     "git",
     "commits",
-    "pull-requests"
+    "pull-requests",
+    "worktrees"
   ]
 }

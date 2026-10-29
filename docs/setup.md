@@ -1,6 +1,6 @@
 # Set up your tools
 
-The catalog contains 25 skills, combining this repository's custom skills with selected upstream tools. Product Design and Engineering are categories; custom and upstream identify who maintains each tool. External sources stay upstream and their portable skill revisions are pinned in `catalog.json`.
+The catalog contains 26 skills, combining this repository's custom skills with selected upstream tools. Product Design and Engineering are categories; custom and upstream identify who maintains each tool. External sources stay upstream and their portable skill revisions are pinned in `catalog.json`.
 
 Install the coding agents first. The setup command needs Python 3.11+. Installing skills also needs Node 22.20.0+, npm/npx, Git, and access to GitHub and npm. Native plugin installation needs the selected host CLI. Applying a local configuration preset needs only Python. Authentication and hook trust remain host setup steps.
 
@@ -25,7 +25,7 @@ Install the complete curated portable selection for chosen agents:
 python3 scripts/setup.py install --all --agent codex claude-code opencode --scope global
 ```
 
-“All skills” means the 25 named skills, not every skill in upstream repositories. Configuration presets and MCP servers are selected separately. Only list the agents you want. Shared compatibility directories may make a skill visible to another agent that reads the same directory.
+“All skills” means the 26 named skills, not every skill in upstream repositories. Configuration presets and MCP servers are selected separately. Only list the agents you want. Shared compatibility directories may make a skill visible to another agent that reads the same directory.
 
 Choose a category, particular skills, or a complete plugin's skills:
 
@@ -193,6 +193,8 @@ Configuration preset checks and their separate limits are recorded in [personal 
 [Git Workflows](../plugins/git-workflows/README.md) adds `write-commit`, with [behavioral, isolated Git, and portable installation results](../evals/results/2026-10-21-write-commit.md). Its real hosting lookups and native host activation remain untested. Linear Workflows 0.2.1 also records the user's concise prose and useful-bullets preference.
 
 Git Workflows 0.2.0 adds `write-pull-request`, including public-repository privacy for PR descriptions and review trackers. Its [results](../evals/results/2026-10-23-write-pull-request.md) distinguish an authorized real description cleanup from synthetic creation checks and disposable installation checks. Native host activation remains untested.
+
+Git Workflows 0.3.0 adds `write-changelog` for automatic entries before task completion, commits or PRs. Select it independently with `--skill write-changelog`; it does not require the personal preset or another writing skill. It follows the repository's changelog process, creates a minimal changelog when none exists, and preserves history and narrow requests. See the [evaluation results](../evals/results/2026-10-27-write-changelog.md) for file-edit, installation and activation limits.
 
 The subsequent `write-linear-issue` addition passed separate [behavioral and portable installation checks](../evals/results/2026-10-21-write-linear-issue.md) on 2026-10-21. Its native plugin activation and authenticated Linear operations remain untested; the earlier 13-skill host discovery results do not cover this addition.
 

@@ -6,6 +6,7 @@ Reconstructed from repository documentation and evaluation records. Dates reflec
 
 ### Added
 
+- **Git Workflows 0.3.0:** added `write-changelog` to record meaningful user impact before task completion, commits or PRs. It follows existing changelog processes, creates a minimal changelog when none exists, and preserves released history. Entries use STE-inspired prose and include required migration steps.
 - **Product Design 0.3.0:** added `design-product` for independently scoped experience designs, saved handoffs, and explicit recovery constraints.
 - **Software Design 0.1.0:** added independent `design-architecture` and `design-code` skills for system contracts, module interfaces, file organization, and caller migration. Designs update existing documents or save under `docs/designs/`, with explicit paths and text-only requests preserved.
 - **Code Quality 0.2.0:** added `audit-scale` for data growth, concurrency, and recovery; `audit-security` for code, dependencies, CI, configuration, and secrets; and `audit-repo` to coordinate all three custom audits. Reports include confidence, effort, and grouped checks. Added matched comparisons with Ponytail and a coverage guide.

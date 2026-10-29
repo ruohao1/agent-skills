@@ -1,0 +1,121 @@
+[
+  {
+    "id": "existing",
+    "group": "primary",
+    "request": "Fix CSV exports so cells with commas, quotes and embedded newlines round-trip correctly. Finish the change without creating a commit or PR.",
+    "handoff": "Implementation and regression tests are already in the working tree. Finish the task and report the result. This is a public repository. Internal tracking context: SAMPLE-731 at https://linear.example.invalid/sample/issue/SAMPLE-731; the tracking reference is internal context, not part of the product. No release was requested.",
+    "files": {
+      "README.md": "# Finch Export\n\nExport saved reports as CSV. Run `python3 -m unittest discover`.\n",
+      "export.py": "__version__ = \"1.4.0\"\n\n\ndef export_row(values):\n    return \",\".join(values) + \"\\n\"\n",
+      "test_export.py": "import unittest\nfrom export import export_row\n\nclass ExportTests(unittest.TestCase):\n    def test_plain(self):\n        self.assertEqual(export_row([\"a\", \"b\"]), \"a,b\\n\")\n\n",
+      "CHANGELOG.md": "# Changelog\n\n## Unreleased\n\n### Added\n\n- Add JSON export for saved reports.\n\n## 1.4.0 - 2025-04-08\n\n### Added\n\n- Export saved reports as CSV files.\n"
+    },
+    "changes": {
+      "export.py": "import csv\nimport io\n\n__version__ = \"1.4.0\"\n\n\ndef export_row(values):\n    output = io.StringIO()\n    csv.writer(output, lineterminator=\"\\n\").writerow(values)\n    return output.getvalue()\n",
+      "test_export.py": "import unittest\nfrom export import export_row\n\nclass ExportTests(unittest.TestCase):\n    def test_plain(self):\n        self.assertEqual(export_row([\"a\", \"b\"]), \"a,b\\n\")\n\n    def test_csv_escaping(self):\n        self.assertEqual(export_row([\"a,b\", 'say \"yes\"', \"two\\nlines\"]), '\"a,b\",\"say \"\"yes\"\"\",\"two\\nlines\"\\n')\n"
+    }
+  },
+  {
+    "id": "missing",
+    "group": "primary",
+    "request": "Change --limit so only positive integers are accepted. Omitting it must keep unlimited results. Remove the old --limit 0 shortcut. Finish the task without committing or publishing.",
+    "handoff": "The implementation, README and regression tests are already updated. Finish the task and report the result. The repository has no release automation or changelog. Its visibility is unknown. No release version or publication date has been decided.",
+    "files": {
+      "README.md": "# Finch Search\n\nUse `--limit 0` for unlimited results. Run `python3 -m unittest discover`.\n",
+      "limits.py": "__version__ = \"2.3.0\"\n\n\ndef parse_limit(value):\n    if value is None or value == \"0\":\n        return None\n    return int(value)\n",
+      "test_limits.py": "import unittest\nfrom limits import parse_limit\n\nclass LimitTests(unittest.TestCase):\n    def test_unlimited(self):\n        self.assertIsNone(parse_limit(None))\n"
+    },
+    "changes": {
+      "README.md": "# Finch Search\n\nOmit `--limit` for unlimited results. Otherwise, supply a positive integer.\n`--limit 0` is no longer supported. Run `python3 -m unittest discover`.\n",
+      "limits.py": "__version__ = \"2.3.0\"\n\n\ndef parse_limit(value):\n    if value is None:\n        return None\n    number = int(value)\n    if number <= 0:\n        raise ValueError(\"--limit must be a positive integer\")\n    return number\n",
+      "test_limits.py": "import unittest\nfrom limits import parse_limit\n\nclass LimitTests(unittest.TestCase):\n    def test_unlimited(self):\n        self.assertIsNone(parse_limit(None))\n\n    def test_positive(self):\n        self.assertEqual(parse_limit(\"5\"), 5)\n\n    def test_zero_and_negative(self):\n        for value in (\"0\", \"-1\"):\n            with self.assertRaises(ValueError):\n                parse_limit(value)\n"
+    }
+  },
+  {
+    "id": "generated",
+    "group": "primary",
+    "request": "Increase the default cache lifetime from 30 to 60 seconds. Preserve explicit per-call overrides. Finish this change without a commit or release.",
+    "handoff": "Implementation, README and tests are updated. Finish the task and report the result. This is a public repository. Existing release files belong to another task.",
+    "files": {
+      "AGENTS.md": "Release tooling generates CHANGELOG.md. If a release entry is written, place a Markdown fragment under news/. Its first line must be Added, Changed, Fixed or Removed, then a blank line and a short paragraph. Keep other fragments intact. Do not edit generated output.\n",
+      "README.md": "# Finch Cache\n\nThe default cache lifetime is 30 seconds. Per-call values override it.\nRun `python3 -m unittest discover`.\n",
+      "cache.py": "__version__ = \"0.8.2\"\nDEFAULT_TTL = 30\n\n\ndef ttl(override=None):\n    return DEFAULT_TTL if override is None else override\n",
+      "test_cache.py": "import unittest\nfrom cache import ttl\n\nclass CacheTests(unittest.TestCase):\n    def test_default(self):\n        self.assertEqual(ttl(), 30)\n\n    def test_override(self):\n        self.assertEqual(ttl(12), 12)\n",
+      "CHANGELOG.md": "# Changelog\n\nGenerated from news/ during release.\n\n## 0.8.2 - 2025-04-09\n\n- Fix cache cleanup on shutdown.\n",
+      "news/metrics.md": "Added\n\nExpose cache hit counts to monitoring tools.\n"
+    },
+    "changes": {
+      "README.md": "# Finch Cache\n\nThe default cache lifetime is 60 seconds. Per-call values override it.\nRun `python3 -m unittest discover`.\n",
+      "cache.py": "__version__ = \"0.8.2\"\nDEFAULT_TTL = 60\n\n\ndef ttl(override=None):\n    return DEFAULT_TTL if override is None else override\n",
+      "test_cache.py": "import unittest\nfrom cache import ttl\n\nclass CacheTests(unittest.TestCase):\n    def test_default(self):\n        self.assertEqual(ttl(), 60)\n\n    def test_override(self):\n        self.assertEqual(ttl(12), 12)\n"
+    }
+  },
+  {
+    "id": "internal",
+    "group": "boundary",
+    "request": "Rename the local variable in total() for readability. Preserve behavior and the public interface. Finish the task without committing.",
+    "handoff": "The local variable rename is implemented. Tests pass. No behavior, performance, configuration or compatibility change exists. Repository visibility is unknown.",
+    "files": {
+      "README.md": "# Finch Totals\n\nRun `python3 -m unittest discover`.\n",
+      "total.py": "def total(values):\n    x = sum(values)\n    return x\n",
+      "test_total.py": "import unittest\nfrom total import total\n\nclass TotalTests(unittest.TestCase):\n    def test_total(self):\n        self.assertEqual(total([1, 2]), 3)\n",
+      "CHANGELOG.md": "# Changelog\n\n## Unreleased\n\n### Added\n\n- Add JSON export for saved reports.\n\n## 1.4.0 - 2025-04-08\n\n### Added\n\n- Export saved reports as CSV files.\n"
+    },
+    "changes": {
+      "total.py": "def total(values):\n    result = sum(values)\n    return result\n"
+    }
+  },
+  {
+    "id": "related",
+    "group": "boundary",
+    "request": "Complete the same CSV escaping fix so quotes and embedded newlines also work. The earlier part already covers commas. Finish without committing or releasing.",
+    "handoff": "The implementation and regression test now cover all three cases. This is the same unreleased change as the existing export entry. Repository visibility is public.",
+    "files": {
+      "README.md": "# Finch Export\n\nRun `python3 -m unittest discover`.\n",
+      "export.py": "__version__ = \"1.4.0\"\n\n\ndef export_row(values):\n    return \",\".join(values) + \"\\n\"\n",
+      "test_export.py": "import unittest\nfrom export import export_row\n\nclass ExportTests(unittest.TestCase):\n    def test_plain(self):\n        self.assertEqual(export_row([\"a\", \"b\"]), \"a,b\\n\")\n\n    def test_csv_escaping(self):\n        self.assertEqual(export_row([\"a,b\", 'say \"yes\"', \"two\\nlines\"]), '\"a,b\",\"say \"\"yes\"\"\",\"two\\nlines\"\\n')\n",
+      "CHANGELOG.md": "# Changelog\n\n## Unreleased\n\n### Added\n\n- Add JSON export for saved reports.\n\n### Fixed\n\n- CSV exports correctly quote cells that contain commas.\n\n## 1.4.0 - 2025-04-08\n\n### Added\n\n- Export saved reports as CSV files.\n"
+    },
+    "changes": {
+      "export.py": "import csv\nimport io\n\n__version__ = \"1.4.0\"\n\n\ndef export_row(values):\n    output = io.StringIO()\n    csv.writer(output, lineterminator=\"\\n\").writerow(values)\n    return output.getvalue()\n"
+    }
+  },
+  {
+    "id": "text-only",
+    "group": "boundary",
+    "request": "Draft one changelog bullet for the CSV escaping fix. Reply with text only. Do not edit any files.",
+    "handoff": "The implementation and regression test are complete. The repository is public. Internal tracking context: SAMPLE-731 at https://linear.example.invalid/sample/issue/SAMPLE-731. No release was requested.",
+    "files": {
+      "README.md": "# Finch Export\n",
+      "export.py": "import csv\nimport io\n\n__version__ = \"1.4.0\"\n\n\ndef export_row(values):\n    output = io.StringIO()\n    csv.writer(output, lineterminator=\"\\n\").writerow(values)\n    return output.getvalue()\n",
+      "test_export.py": "import unittest\nfrom export import export_row\n\nclass ExportTests(unittest.TestCase):\n    def test_plain(self):\n        self.assertEqual(export_row([\"a\", \"b\"]), \"a,b\\n\")\n\n    def test_csv_escaping(self):\n        self.assertEqual(export_row([\"a,b\", 'say \"yes\"', \"two\\nlines\"]), '\"a,b\",\"say \"\"yes\"\"\",\"two\\nlines\"\\n')\n",
+      "CHANGELOG.md": "# Changelog\n\n## Unreleased\n\n### Added\n\n- Add JSON export for saved reports.\n\n## 1.4.0 - 2025-04-08\n\n### Added\n\n- Export saved reports as CSV files.\n"
+    },
+    "changes": {}
+  },
+  {
+    "id": "restricted",
+    "group": "boundary",
+    "request": "Only correct the misspelling in the README heading. Do not change any other files.",
+    "handoff": "The README heading is corrected in the working tree. Finish the task. No product behavior changed.",
+    "files": {
+      "README.md": "# Fincch Export\n",
+      "CHANGELOG.md": "# Changelog\n\n## Unreleased\n\n### Added\n\n- Add JSON export for saved reports.\n\n## 1.4.0 - 2025-04-08\n\n### Added\n\n- Export saved reports as CSV files.\n"
+    },
+    "changes": {
+      "README.md": "# Finch Export\n"
+    }
+  },
+  {
+    "id": "investigation",
+    "group": "boundary",
+    "request": "Inspect why CSV exports break on commas and explain the cause. Do not implement a fix or change files.",
+    "handoff": "The task is an investigation. No implementation or release exists. Review the current function and answer from evidence.",
+    "files": {
+      "README.md": "# Finch Export\n",
+      "export.py": "__version__ = \"1.4.0\"\n\n\ndef export_row(values):\n    return \",\".join(values) + \"\\n\"\n",
+      "CHANGELOG.md": "# Changelog\n\n## Unreleased\n\n### Added\n\n- Add JSON export for saved reports.\n\n## 1.4.0 - 2025-04-08\n\n### Added\n\n- Export saved reports as CSV files.\n"
+    },
+    "changes": {}
+  }
+]

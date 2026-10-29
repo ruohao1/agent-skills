@@ -147,6 +147,14 @@
       "description": "Write and save pull requests with verified context and no Linear references in public repositories."
     },
     {
+      "name": "write-changelog",
+      "category": "engineering",
+      "ownership": "custom",
+      "source": "local",
+      "path": "plugins/git-workflows/skills/write-changelog",
+      "description": "Keep changelog entries current for meaningful changes, with clear user impact and preserved history."
+    },
+    {
       "name": "audit-code",
       "category": "engineering",
       "ownership": "custom",
@@ -301,7 +309,8 @@
       "skills": [
         "manage-worktrees",
         "write-commit",
-        "write-pull-request"
+        "write-pull-request",
+        "write-changelog"
       ],
       "native": {
         "marketplace": "personal",

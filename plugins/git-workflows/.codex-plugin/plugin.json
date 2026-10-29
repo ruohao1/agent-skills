@@ -1,7 +1,7 @@
 {
   "name": "git-workflows",
-  "version": "0.4.0",
-  "description": "Isolate task worktrees and write reviewable commits and pull requests with verified context and repository privacy.",
+  "version": "0.5.0",
+  "description": "Isolate task worktrees and write useful changelogs, reviewable commits and pull requests with verified context and repository privacy.",
   "author": {
     "name": "ruohao1",
     "url": "https://github.com/ruohao1"
@@ -12,12 +12,13 @@
     "git",
     "commits",
     "pull-requests",
-    "worktrees"
+    "worktrees",
+    "changelog"
   ],
   "interface": {
     "displayName": "Git Workflows",
-    "shortDescription": "Isolated task worktrees, reviewable commits and pull requests.",
-    "longDescription": "Keep repository tasks in their own worktrees, resume the right workspace, preserve unfinished work, and write reviewable commits and pull requests.",
+    "shortDescription": "Task worktrees, useful changelogs and reviewable Git changes.",
+    "longDescription": "Keep tasks in their own worktrees and changelogs current before handoff. Resume the right workspace, preserve unfinished work, and write reviewable commits and pull requests.",
     "developerName": "ruohao1",
     "category": "Productivity",
     "capabilities": [],

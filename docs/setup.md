@@ -1,6 +1,6 @@
 # Set up your tools
 
-The catalog contains 28 skills, combining this repository's custom skills with selected upstream tools. Product Design and Engineering are categories; custom and upstream identify who maintains each tool. External sources stay upstream and their portable skill revisions are pinned in `catalog.json`.
+The catalog contains 29 skills, combining this repository's custom skills with selected upstream tools. Product Design and Engineering are categories; custom and upstream identify who maintains each tool. External sources stay upstream and their portable skill revisions are pinned in `catalog.json`.
 
 Install the coding agents first. The setup command needs Python 3.11+. Installing skills also needs Node 22.20.0+, npm/npx, Git, and access to GitHub and npm. Native plugin installation needs the selected host CLI. Applying a local configuration preset needs only Python. Authentication and hook trust remain host setup steps.
 
@@ -25,7 +25,7 @@ Install the complete curated portable selection for chosen agents:
 python3 scripts/setup.py install --all --agent codex claude-code opencode --scope global
 ```
 
-“All skills” means the 28 named skills, not every skill in upstream repositories. Configuration presets and MCP servers are selected separately. Only list the agents you want. Shared compatibility directories may make a skill visible to another agent that reads the same directory.
+“All skills” means the 29 named skills, not every skill in upstream repositories. Configuration presets and MCP servers are selected separately. Only list the agents you want. Shared compatibility directories may make a skill visible to another agent that reads the same directory.
 
 Choose a category, particular skills, or a complete plugin's skills:
 
@@ -216,3 +216,5 @@ All three design skills save concise handoffs under `docs/designs/` by default. 
 Git Workflows 0.4.0 adds `manage-worktrees` for automatic isolation before repository edits, matching workspace resumption and verified cleanup after merge. New worktrees use `repo/.worktree/<branch>`. The skill works without the personal preset and supplies no background service or cross-host lock. See the [worktree results](../evals/results/2026-10-28-manage-worktrees.md) for observed behavior and installation limits.
 
 Linear Workflows 0.7.0 adds `check-linear-context` and `maintain-linear-project`. Select either independently; no preset or shared instruction edit is required. Context discovery needs read access. Starting authorized work on a verified issue also needs status-update access. Project cleanup needs the relevant issue/document operations and preserves unresolved decisions. Existing writing, comments and completion rules remain in force. See the [original context evaluation](../evals/results/2026-10-25-check-linear-context.md) and [current publication checks](../evals/results/2026-10-29-linear-workflows.md) for the tested scopes and limits.
+
+Git Workflows 0.5.0 adds `write-changelog` for automatic entries before task completion, commits or PRs. Select it independently with `--skill write-changelog`; it does not require the personal preset or another writing skill. It follows the repository's changelog process, creates a minimal changelog when none exists, and preserves history and narrow requests. See the [evaluation results](../evals/results/2026-10-27-write-changelog.md) for file-edit, installation and activation limits.

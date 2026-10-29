@@ -6,6 +6,7 @@ Reconstructed from repository documentation and evaluation records. Dates reflec
 
 ### Added
 
+- **Linear Workflows 0.7.0:** added automatic project context checks and early active-status updates for selected work, plus authorized project maintenance that preserves issue requirements and history. Reviews and context discovery remain read-only; completion requires verified evidence and a saved final summary.
 - **Git Workflows 0.4.0:** added `manage-worktrees` for automatic task isolation at `.worktree/<branch>`, matching workspace resumption and cleanup after verified merge. It preserves the original checkout, other active tasks and unique ignored files.
 
 - **Product Design 0.3.0:** added `design-product` for independently scoped experience designs, saved handoffs, and explicit recovery constraints.

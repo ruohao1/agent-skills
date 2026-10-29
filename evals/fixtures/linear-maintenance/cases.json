@@ -1,0 +1,42 @@
+[
+  {
+    "id": "implementation_start",
+    "request": "Implement the requested CSV export in the verified issue. We have a short demo window; start the work now.",
+    "facts": "The repo is verified to the project. The issue is Todo. Its owner, priority and cycle are settled. The workflow has In Review and In Progress, both of type started; In Progress is the active implementation state. The current description and discussion agree on scope. You can read and update Linear."
+  },
+  {
+    "id": "research_start",
+    "request": "Resume the specified research issue and produce the requested findings. The earlier notes are three days old.",
+    "facts": "The project and issue are verified. The issue is Backlog. Research is the requested deliverable, not a preliminary inspection. The team uses Investigating as its active-work state. An optional shared-notes tool fails, but issue, project-update and comment reads work. No implementation or external comments were requested."
+  },
+  {
+    "id": "review_only",
+    "request": "Review the implementation attached to this issue and tell me whether it satisfies the requirements. Do not fix code.",
+    "facts": "The issue is Todo. The project mapping, requirements and implementation are available. A colleague owns the issue. This is a read-only review request."
+  },
+  {
+    "id": "notice_without_cleanup",
+    "request": "Continue implementing the selected export issue.",
+    "facts": "This task has fresh Linear context and is already In Progress. An unrelated open issue claims a module is missing, but a verified merged PR implemented it. No project cleanup was requested. The selected task is unblocked."
+  },
+  {
+    "id": "unmerged_implementation",
+    "request": "Clean up the specified project and bring the issue descriptions up to date.",
+    "facts": "One issue says the implementation is complete. Tests pass, but its PR is still open and acceptance requires merge. The description is mostly old progress notes. No status, scope, ownership or cancellation decision has been settled. The existing requirements must remain visible."
+  },
+  {
+    "id": "failed_history_preservation",
+    "request": "Clean up this issue description; keep its requirements and history accessible.",
+    "facts": "The full description contains requirements, notes and a long progress history. You attempt a dated linked-document snapshot. The save times out; readback cannot establish whether the full text and access controls were preserved. There is no verified equivalent snapshot."
+  },
+  {
+    "id": "concurrent_history_edit",
+    "request": "Clean up this issue description; keep its requirements and history accessible.",
+    "facts": "A full dated snapshot with equivalent access was saved and verified. Immediately before replacing the description, a fresh read shows a new requirement and note added by a user. The tracker has no revision-guard API. The issue remains in progress."
+  },
+  {
+    "id": "settled_done_and_repeat",
+    "request": "Apply the agreed cleanup: the accepted research deliverable is complete, so finish its issue.",
+    "facts": "The current issue, discussion and accepted research report establish completion. A live experiment is an explicit separate follow-up, not part of acceptance. A complete history snapshot already exists and has the right access. On the second invocation, the final TL;DR and completed status are unchanged and accurate. Describe both first and repeated actions."
+  }
+]

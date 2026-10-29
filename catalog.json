@@ -83,6 +83,22 @@
       "description": "Design module interfaces, dependencies, file organization, and caller migration."
     },
     {
+      "name": "check-linear-context",
+      "category": "engineering",
+      "ownership": "custom",
+      "source": "local",
+      "path": "plugins/linear-workflows/skills/check-linear-context",
+      "description": "Check current Linear context and start authorized issue work in the active state before substantive work."
+    },
+    {
+      "name": "maintain-linear-project",
+      "category": "engineering",
+      "ownership": "custom",
+      "source": "local",
+      "path": "plugins/linear-workflows/skills/maintain-linear-project",
+      "description": "Reconcile Linear project state, preserve issue history and identify decisions needed for cleanup."
+    },
+    {
       "name": "write-linear-issue",
       "category": "engineering",
       "ownership": "custom",
@@ -269,6 +285,8 @@
     {
       "name": "linear-workflows",
       "skills": [
+        "check-linear-context",
+        "maintain-linear-project",
         "write-linear-issue",
         "write-linear-comment",
         "wrap-up-linear-issue"

@@ -1,7 +1,7 @@
 {
   "name": "linear-workflows",
-  "version": "0.4.3",
-  "description": "Write concise Linear issues, research comments, and final wrap-ups with verified context and permanent evidence links.",
+  "version": "0.7.0",
+  "description": "Check Linear context, start issue work promptly, maintain project state and write concise issues, comments and wrap-ups.",
   "author": {
     "name": "ruohao1",
     "url": "https://github.com/ruohao1"
@@ -10,8 +10,11 @@
   "repository": "https://github.com/ruohao1/agent-skills",
   "keywords": [
     "linear",
+    "context",
     "issues",
     "comments",
-    "wrap-up"
+    "wrap-up",
+    "maintenance",
+    "status"
   ]
 }

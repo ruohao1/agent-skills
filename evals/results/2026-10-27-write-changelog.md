@@ -74,3 +74,24 @@ It does not establish automatic invocation across full host catalogs or every
 future task. Authenticated host loading, native plugin activation and release
 generation were not tested. No live installation, commit or publication was
 performed. This change adds guidance, not a hook that can force invocation.
+
+## Publication check: 2026-10-29
+
+The original evaluation above used Git Workflows 0.3.0. Publication now packages
+the identical skill as 0.5.0, preserving the subsequently added worktree skill.
+The recorded SHA-256 still matches. The behavioral scenarios were not rerun.
+
+The publication branch builds on the Linear Workflows publication branch. Its
+combined catalog contains 29 skills, including 17 custom skills across five
+plugins. Both Git Workflows manifests declare 0.5.0 and list the same package
+metadata. The three existing Git skill files are unchanged.
+
+All 73 unit tests, marketplace validation, skill validation and whitespace
+checks passed on the combined contents. Selected first and repeated Skills CLI
+1.7.2 installs passed in disposable Codex, Claude Code and OpenCode homes. Each
+copy matched the evaluated source. Five unrelated files per home retained their
+contents and timestamps.
+
+These checks cover packaging and installation preservation. They do not retest
+the original model comparisons or establish native host activation. No live
+agent configuration was changed by the publication checks.

@@ -1,0 +1,30 @@
+{
+  "notice": "Synthetic cases. All names, issue identifiers, and URLs are invented. Each case is independent. Connected read tools are available for Linear projects, status updates, issues, and comments, as well as local repository reads. No tool calls have happened unless recorded in the case.",
+  "cases": [
+    {
+      "id": "new-session",
+      "request": "Add a Retry button to failed deliveries in the admin panel. The demo is in twenty minutes; the last agent already identified the two files to change, so keep the patch focused.",
+      "context": "A new agent session in parcel-service. README identifies the repository as example/parcel-service and links its Linear project: https://linear.example.test/project/parcel-service, ID project-parcel. Local notes name ui/DeliveryRow.tsx and api/retry.ts. No current project activity has been read."
+    },
+    {
+      "id": "same-session-new-task",
+      "request": "The delivery badge fix is done. Now increase the webhook timeout and handle slow partners.",
+      "context": "Same parcel-service session. At 09:00 the agent read the Linear project and found no timeout decision. It finished the badge task. It is now 11:20. The project ID and URL are known. No further Linear reads have occurred."
+    },
+    {
+      "id": "resumed-session",
+      "request": "Continue the retry work from where we left off.",
+      "context": "The conversation resumes after three days. Its saved context says project-parcel, issue PAR-31, a Retry button proposal, and an implementation plan. No current repository or Linear state has been read."
+    },
+    {
+      "id": "same-task-continuation",
+      "request": "The new test fails on the empty-state case. Fix that assertion and rerun it.",
+      "context": "The agent is still implementing the same delivery badge task. It read current Linear context five minutes ago, including the relevant thread and settled acceptance criteria. No new task, interruption, or changed decision is indicated."
+    },
+    {
+      "id": "local-only",
+      "request": "Correct the spelling of delivery in this pasted sentence. Use only this text: 'The delivrey is complete.'",
+      "context": "A project repository and Linear connection exist in the environment. The request needs no project facts."
+    }
+  ]
+}

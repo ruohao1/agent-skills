@@ -9,6 +9,10 @@ catalog and installer support. No runtime or shared instruction changes.
 **Tech Stack:** Markdown, JSON, existing Python validators, Skills CLI 1.7.2.
 **Spec:** [Approved design](write-changelog.md).
 
+Publication update, 2026-10-29: the unchanged skill is packaged as Git Workflows
+0.5.0 alongside worktree management. The checklist below records the original
+0.3.0 implementation. Current packaging checks are recorded in the results.
+
 ## Constraints and review focus
 
 - Shared use across Codex, Claude Code and OpenCode without a personal preset.
@@ -65,5 +69,7 @@ existing changelogs and fragments; the candidate added the agreed automatic
 creation behavior in five of five cases. Unit tests, skill validation and three
 disposable install/repeat checks passed. Documentation checks passed. An
 independent whole-change review inspected all responses and edits and found
-no actionable issues. Commit, publication and live installation remain separate.
-See the [results](../../evals/results/2026-10-27-write-changelog.md).
+no actionable issues. That initial evaluation ended before commit, publication
+or live installation. The later publication check preserves the same skill and
+revalidates the combined package. See the
+[results](../../evals/results/2026-10-27-write-changelog.md).

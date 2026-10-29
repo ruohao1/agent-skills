@@ -1,7 +1,7 @@
 {
   "name": "git-workflows",
-  "version": "0.3.0",
-  "description": "Write useful changelogs, reviewable commits and pull requests with verified context and repository privacy.",
+  "version": "0.5.0",
+  "description": "Isolate task worktrees and write useful changelogs, reviewable commits and pull requests with verified context and repository privacy.",
   "author": {
     "name": "ruohao1",
     "url": "https://github.com/ruohao1"
@@ -12,6 +12,7 @@
     "git",
     "commits",
     "pull-requests",
+    "worktrees",
     "changelog"
   ]
 }

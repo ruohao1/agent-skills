@@ -1,7 +1,7 @@
 {
   "name": "git-workflows",
-  "version": "0.3.0",
-  "description": "Write useful changelogs, reviewable commits and pull requests with verified context and repository privacy.",
+  "version": "0.5.0",
+  "description": "Isolate task worktrees and write useful changelogs, reviewable commits and pull requests with verified context and repository privacy.",
   "author": {
     "name": "ruohao1",
     "url": "https://github.com/ruohao1"
@@ -12,19 +12,20 @@
     "git",
     "commits",
     "pull-requests",
+    "worktrees",
     "changelog"
   ],
   "interface": {
     "displayName": "Git Workflows",
-    "shortDescription": "Useful changelogs, reviewable commits and pull requests.",
-    "longDescription": "Keep changelogs current before task completion, create small commits and concise pull requests, and preserve unrelated work and repository privacy.",
+    "shortDescription": "Task worktrees, useful changelogs and reviewable Git changes.",
+    "longDescription": "Keep tasks in their own worktrees and changelogs current before handoff. Resume the right workspace, preserve unfinished work, and write reviewable commits and pull requests.",
     "developerName": "ruohao1",
     "category": "Productivity",
     "capabilities": [],
     "defaultPrompt": [
       "Commit the intended changes as small, reviewable commits.",
       "Write and save a pull request for the completed change.",
-      "Update the changelog for the completed change."
+      "Prepare or resume the worktree for this repository task."
     ]
   }
 }

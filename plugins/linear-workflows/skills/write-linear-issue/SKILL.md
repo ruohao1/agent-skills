@@ -21,9 +21,21 @@ Ask only questions whose answers materially change scope or acceptance criteria.
 
 When the intended work matches, improve the existing issue, preserving valid requirements and discussion. For distinct work, create a separate issue and link the relevant existing work. Use a dependency only when it is established; thematic similarity supports a related link. Preserve existing discussion rather than deleting it or posting an unsolicited comment.
 
+When the request concerns a capability, keep that outcome as the issue's scope.
+Specifying or planning it is a task within the issue. A planning-only session or
+design workflow limits current actions; its stop condition does not define issue
+completion. Use an outcome title and track planning as a checkpoint. Keep the
+problem, constraints and completion checks in the issue; link detailed designs.
+
+Planning can lead to delivery, a revised approach, a split, deferral or cancellation.
+Keep unsettled decisions open; a prospective Feature does not commit to implementation.
+If delivery needs separate issues, retain a parent for the capability and link its
+independently useful slices. Preserve an explicitly independent research or design
+deliverable as its own issue. Nearby specification issues do not establish that scope.
+
 ## Choose the type
 
-Choose one primary type from the issue's final deliverable:
+Choose one primary type from the issue's intended outcome, across its work phases:
 
 - **Bug:** Restore behavior that violates an established expectation.
 - **Feature:** Add or intentionally change a capability, including improvements.

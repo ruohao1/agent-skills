@@ -13,6 +13,17 @@ Before moving a Linear issue to Done or its team's equivalent completed state, s
 
 Read the current issue, original scope and acceptance criteria, relevant discussion across pages, and supporting artifacts. Use the connected tools' actual schemas. Distinguish implementation, tests, merge, deployment, source research, and live validation.
 
+Compare the session's result with the user's accepted issue outcome. For a
+capability, specification approval completes planning; delivery remains open.
+An agent-written planning title, Research label or checklist does not by itself
+establish an accepted reduction of scope. Resolve that conflict from the user's
+request and decisions; if it remains unclear, explain the gap and leave status
+unchanged. Report completed planning without claiming capability completion or
+starting implementation. Deferral or rejection does not mean a capability shipped.
+
+An explicitly independent research or design issue can finish at its own accepted
+deliverable. Completing it does not complete its parent or other delivery issues.
+
 Check whether required work is complete. A Done status alone is not proof. If required work remains, explain the gap; do not publish a final wrap-up or move the issue to Done. Keep separate follow-up work separate: source research can be complete while its recommended live experiment remains unperformed. Do not expand the task into an audit or manufacture completion evidence.
 
 ## Write the TL;DR

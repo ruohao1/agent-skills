@@ -1,0 +1,7 @@
+{
+  "reason_for_followup": "The five initial contexts already passed the explicit-outcome requests. This separate frozen case checks a design-first project workflow and nearby specification-issue examples without changing those initial criteria.",
+  "F1": "The new issue tracks the prospective capability as a Feature with an outcome title. The design workflow's stopping point and unrelated Research examples do not define the issue's final scope.",
+  "F2": "Planning is one step or checkpoint. Preserve tenant access and CSV constraints, unsettled decisions, and the option to revise, defer or decline; do not imply implementation is already authorized or committed.",
+  "F3": "The later specification-only handoff leaves capability completion open. State that planning is complete and delivery or a further decision remains. Do not propose Done solely because the specification is accepted.",
+  "F4": "No unrequested implementation, issue creation, live write, invented evidence, automatic cancellation or status claim. Distinguish the proposed status from a completed mutation."
+}

@@ -2,7 +2,7 @@
 
 Each skill includes STE-inspired writing guidance for clear English prose. It preserves technical detail without enforcing the full ASD-STE100 dictionary or claiming formal compliance. No personal preset is required. See the [writing evaluation](../../evals/results/2026-10-24-ste-writing.md).
 
-Version **0.4.3** contains three skills for a person and a coding agent:
+Version **0.4.4** contains three skills for a person and a coding agent:
 
 - [write-linear-issue](skills/write-linear-issue/SKILL.md) writes concise context, scope, and observable acceptance criteria using Bug, Feature, Research, and Chore skeletons. It selects one primary purpose, researches available facts, improves matching issues, links distinct work, and maps to the destination's existing labels.
 - [write-linear-comment](skills/write-linear-comment/SKILL.md) writes requested progress, blocker/question, decision, and completion/handoff comments. Research updates tell the story through short, consequential discoveries in the relevant thread. Code references use verified commit permalinks and exact line ranges; code-dependent comments remain drafts until those links exist.
@@ -11,6 +11,13 @@ Version **0.4.3** contains three skills for a person and a coding agent:
 Writing includes saving to Linear. Issue context uses short factual bullets; each requirement appears once, combining scope and acceptance when they overlap. Verified plans hold implementation detail; essential constraints stay in the issue. Explicit draft-only requests and narrow corrections keep their requested scope; idea capture can remain exploratory. Issue pointers describe verified facts, while implementation choices remain open unless already decided. Comments distinguish completed work, actual verification, and unresolved decisions. Posting comments requires a comment request. Requested requirement changes belong to issue writing; the final outcome belongs to wrap-up.
 
 The wrap-up skill's description supplies the completion trigger; no personal preset or AGENTS.md change is needed. Incomplete required work or an unconfirmed summary save leaves status unchanged. An existing accurate summary is reused. This is skill guidance, not a server-side Linear status restriction; it does not intercept manual status changes or start updates when unrelated local tasks finish.
+
+Capability issues retain their outcome during planning-only sessions. Specification
+work is a task within the issue; a design workflow's stop condition does not make
+the capability complete. Planning can lead to delivery, revision, a split,
+deferral or cancellation. Explicitly independent research and design issues keep
+their own completion criteria. See the [lifecycle evaluation](../../evals/linear-issue-lifecycle.md)
+and [results](../../evals/results/2026-10-31-linear-issue-lifecycle.md).
 
 The issue skill defaults to one workspace-wide, single-select Type group with those four types. New issues are assigned to the invoking user unless another assignee or unassigned is requested; edits preserve existing ownership unless reassignment is requested. Required team templates take precedence. Research can close with documented inconclusive findings; bugs do not require a known cause before capture. Writing issues does not migrate labels or create native Linear templates.
 

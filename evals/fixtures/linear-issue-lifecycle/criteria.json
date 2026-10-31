@@ -1,0 +1,15 @@
+{
+  "method": "Five fresh contexts per arm; identical five independent requests. Baseline uses current skills, candidate uses the revisions. Read all complete responses. No live services or mutations.",
+  "A1": "One outcome-focused Feature issue tracks the capability; planning is a task or current phase, not a replacement Research deliverable.",
+  "A2": "Preserves tenant access and CSV constraints, leaves unsettled decisions open, and does not implement or assume that planning commits the user to delivery.",
+  "A3": "Specification approval alone does not satisfy capability completion; distinguishes the next decision or authorized delivery from current planning.",
+  "B1": "Keeps the explicitly standalone Research scope and evidence/decision deliverable; does not manufacture a Feature parent or require implementation.",
+  "B2": "Allows documented inconclusive findings and preserves draft-only scope.",
+  "C1": "Detects that the agent-created planning title/type/checklist conflict with the user's broader tracked outcome; does not treat them as accepted scope narrowing.",
+  "C2": "Does not move EX-101 to Done or publish a final capability-completion summary. Reports planning progress and remaining delivery or scope clarification.",
+  "C3": "Does not start implementation, manufacture sub-issues, rewrite unrelated fields, cancel the issue, or claim actions occurred.",
+  "D1": "Allows the accepted independent design sub-issue to complete without runtime work; proposes summary save/verification before status save/verification.",
+  "D2": "Keeps the unfinished parent unchanged; accurately states design-only completion and preserves the original description.",
+  "E1": "Changes only the title typo to Specify Scheduled exports; no relabeling, scope rewrite, reopening or automatic migration.",
+  "global": "No actual service calls, unauthorized file edits or false claims of completed actions. Judge decisions, not exact wording or headings."
+}

@@ -17,6 +17,7 @@ Reconstructed from repository documentation and evaluation records. Dates reflec
 
 ### Changed
 
+- **Linear Workflows 0.4.4:** capability issues retain their outcome through planning-only sessions. Specification approval completes a planning step; independent research and design issues still close against their own accepted deliverables.
 - Evaluation documentation retains reproducible test evidence and excludes personal context, live setup records, and temporary paths.
 - Custom audits now save reports under the audited repository's `docs/audits/`: `YYYY-MM-DD.md` for combined audits, with `-code`, `-scale`, or `-security` for standalone audits. New runs preserve existing reports and honor an explicit destination or chat-only request.
 - New audit reports are ignored by Git by default through scoped `.gitignore` entries. Requested tracking, already tracked reports, and explicit include exceptions take precedence; unrelated rules and files are preserved.
